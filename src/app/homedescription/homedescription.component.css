@@ -1,0 +1,56 @@
+.description-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #343a40;
+  color: #fff; /* Light text color for contrast */
+}
+
+.left-container {
+  flex: 1;
+  padding-right: 20px;
+}
+
+.right-container {
+  flex: 1;
+  /* Add responsive styling for the image or moving component here */
+}
+
+h2 {
+  font-size: 24px;
+  color: inherit; /* Ensure this is a light color for readability */
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-top: 10px; /* Add spacing between paragraphs */
+  color: inherit; /* Ensure this is a light color for readability */
+}
+
+.cta-button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.cta-button:hover {
+  background-color: #0056b3; /* Darker shade on hover for the button */
+}
+
+@media (max-width: 768px) {
+  .description-container {
+    flex-direction: column;
+  }
+  
+  .left-container,
+  .right-container {
+    padding-right: 0;
+    flex: none;
+  }
+}

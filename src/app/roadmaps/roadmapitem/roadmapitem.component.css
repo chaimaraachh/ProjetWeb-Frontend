@@ -1,0 +1,30 @@
+.roadmap-item {
+  border: 1px solid #343a40;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  width: 500px;
+  margin: 0 auto; 
+}
+
+.roadmap-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.roadmap-image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.roadmap-name {
+  padding: 12px;
+  background-color: #343a40;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1rem;
+  color: #fff; 
+}

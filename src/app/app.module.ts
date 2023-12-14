@@ -13,6 +13,11 @@ import { MilestonedetailsComponent } from './milestones/milestonedetails/milesto
 import { QuizComponent } from './quizpage/quiz/quiz.component';
 import { QuestionComponent } from './quizpage/question/question.component';
 import { SearchComponent } from './search/search.component';
+import { HomedescriptionComponent } from './homedescription/homedescription.component';
+import { MovingImagesComponent } from './moving-images/moving-images.component';
+import { ScoringdashboardComponent } from './scoringdashboard/scoringdashboard.component';
+import { AboutusComponent } from './aboutus/aboutus.component';
+import { RoadmapitemComponent } from './roadmaps/roadmapitem/roadmapitem.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +31,12 @@ import { SearchComponent } from './search/search.component';
     MilestonedetailsComponent,
     QuizComponent,
     QuestionComponent,
-    SearchComponent
+    SearchComponent,
+    HomedescriptionComponent,
+    MovingImagesComponent,
+    ScoringdashboardComponent,
+    AboutusComponent,
+    RoadmapitemComponent
   ],
   imports: [
     BrowserModule,
