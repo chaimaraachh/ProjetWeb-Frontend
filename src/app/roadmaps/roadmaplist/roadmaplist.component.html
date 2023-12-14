@@ -1,3 +1,16 @@
-<div>
-    <p>roadmaplist works!</p>
+<!-- Add the title and description using Bootstrap classes -->
+<div class="container mt-5 text-light bg-dark p-4">
+  <h1 class="display-4 text-center mb-4">Explore Our Learning Paths</h1>
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <p class="lead text-center">
+        Embark on a journey of knowledge and discovery as you explore our diverse learning paths. Dive into the realms of DevOps, AI, and Data Science, and chart your course towards technological mastery. Engage with our curated roadmaps, each offering a unique perspective on the exciting world of modern technology.
+      </p>
+    </div>
+  </div>
+
+  <!-- Display the roadmap grid -->
+  <div class="roadmap-grid">
+    <app-roadmapitem *ngFor="let roadmap of roadmaps" [image]="roadmap.image" [name]="roadmap.name"></app-roadmapitem>
+  </div>
 </div>

@@ -1,27 +1,28 @@
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ngx-toastr@latest/toastr.css">
-
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a
-            class="nav-link"
-            aria-current="page"
-            routerLinkActive="active text-primary"
-            [routerLink]="['roadmaps']"
-            >Roadmaps</a
-          >
-          <a
-          class="nav-link"
-          aria-current="page"
-          routerLinkActive="active text-primary"
-          [routerLink]="['dashboard']"
-          >Dashboard</a
-          >
-        <input type="text" placeholder="search" class="">
-        <button class="btn btn-primary">login/singin</button>
-      </div>
-      </div>
-    </div>
-  </nav>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#"><img src="path-to-your-logo.png" alt="YourBrand Logo" height="30"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        <a class="nav-link" [routerLink]="['/roadmaps']">Roadmaps</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        <a class="nav-link" [routerLink]="['/scoringdashboard']">Scoring Dashboard</a>
+      </li>
+      <!-- The login/sign-in dropdown can remain as is since it doesn't navigate using routerLink -->
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Login/Sign In
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">Profile</a>
+          <a class="dropdown-item" href="#">Settings</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Logout</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
