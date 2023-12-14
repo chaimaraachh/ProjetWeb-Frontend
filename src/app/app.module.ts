@@ -13,6 +13,7 @@ import { MilestonedetailsComponent } from './milestones/milestonedetails/milesto
 import { QuizComponent } from './quizpage/quiz/quiz.component';
 import { QuestionComponent } from './quizpage/question/question.component';
 import { SearchComponent } from './search/search.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { SearchComponent } from './search/search.component';
     MilestonedetailsComponent,
     QuizComponent,
     QuestionComponent,
-    SearchComponent
+    SearchComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
