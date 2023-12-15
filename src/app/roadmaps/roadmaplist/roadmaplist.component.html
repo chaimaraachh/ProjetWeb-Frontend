@@ -11,6 +11,8 @@
 
   <!-- Display the roadmap grid -->
   <div class="roadmap-grid">
-    <app-roadmapitem *ngFor="let roadmap of roadmaps" [image]="roadmap.image" [name]="roadmap.name"></app-roadmapitem>
-  </div>
+    <div *ngFor="let roadmap of roadmaps" (click)="navigateToRoadmap(roadmap.name)">
+      <app-roadmapitem [image]="roadmap.image" [name]="roadmap.name"></app-roadmapitem>
+    </div>
 </div>
+

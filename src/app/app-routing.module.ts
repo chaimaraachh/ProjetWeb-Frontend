@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'roadmaps', component: RoadmaplistComponent },
   { path: 'aboutus', component: AboutusComponent },
   { path: 'scoringdashboard', component: ScoringdashboardComponent  },
-
+  { path: 'roadmap', component: RoadmapComponent },
 ];
 
 @NgModule({
