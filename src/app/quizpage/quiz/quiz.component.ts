@@ -8,21 +8,11 @@ import { Question } from '../question/question';
   styleUrls: ['./quiz.component.css']
 })
 export class QuizComponent implements OnInit {
+  //get the questions 
   questions: Question[] = [
-    new Question(
-      1,
-      'What is the capital of France?',
-      ['New York', 'London', 'Paris', 'Berlin'],
-      'Paris'
-    ),
-    new Question(
-      2,
-      'What is the capital of France?',
-      ['New York', 'London', 'Paris', 'Berlin'],
-      'Paris'
-    ),
+    new Question(1,'What is the capital of France?',['New York', 'London', 'Paris', 'Berlin'],'Paris'),
+    new Question(2,'What is the capital of France?',['New York', 'London', 'Paris', 'Berlin'],'Paris'),
   ];
-  remainingTime = 0; // Initial value for the timer
 
   quizForm: FormGroup;
   constructor(private fb: FormBuilder) {
@@ -36,19 +26,25 @@ export class QuizComponent implements OnInit {
     this.startTimer();
   }
 
+  quizDuration:number = 60; // Quiz duration in seconds
+  quizStartTime!: Date; // Time when the quiz starts
+  remainingTime:number = 0;  
   startTimer() {
-    // Set the initial time (in seconds)
-    this.remainingTime = 60; // in seconds
-    const timerInterval = 1000; // in millisecond
-    // Start the timer
+    this.quizStartTime = new Date(); // Record the start time
+    const timerInterval = 1000;
+
     const timer = setInterval(() => {
-      this.remainingTime--;
+      const now = new Date();
+      const elapsedTime = Math.round((now.getTime() - this.quizStartTime.getTime()) / 1000);
+      this.remainingTime = Math.max(this.quizDuration - elapsedTime, 0);
+
       if (this.remainingTime <= 0) {
-        clearInterval(timer); // Stop the timer when it reaches 0
-        // You can also add logic to handle the timer reaching 0 here
+        clearInterval(timer);
+        // Handle timer reaching 0 here
       }
     }, timerInterval);
   }
+  
   // HostListener to detect when the user tries to leave the page
   @HostListener('window:beforeunload', ['$event'])
   leavingPageAlert($event: any): void {
