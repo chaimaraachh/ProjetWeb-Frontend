@@ -6,6 +6,8 @@ import { ScoringdashboardComponent } from './scoringdashboard/scoringdashboard.c
 import { HomedescriptionComponent } from './homedescription/homedescription.component';
 import { RoadmaplistComponent } from './roadmaps/roadmaplist/roadmaplist.component';
 import { QuizComponent } from './quizpage/quiz/quiz.component';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -15,6 +17,8 @@ const routes: Routes = [
   { path: 'scoringdashboard', component: ScoringdashboardComponent  },
   { path: 'quiz', component: QuizComponent  },
   { path: 'roadmap', component: RoadmapComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent},
 ];
 
 @NgModule({

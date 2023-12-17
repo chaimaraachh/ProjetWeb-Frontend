@@ -17,6 +17,10 @@ import { MovingImagesComponent } from './moving-images/moving-images.component';
 import { ScoringdashboardComponent } from './scoringdashboard/scoringdashboard.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { RoadmapitemComponent } from './roadmaps/roadmapitem/roadmapitem.component';
+import { LoginComponent } from './login/login.component';
+import { FormsModule } from '@angular/forms';
+import { SignupComponent } from './signup/signup.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -34,11 +38,15 @@ import { RoadmapitemComponent } from './roadmaps/roadmapitem/roadmapitem.compone
     ScoringdashboardComponent,
     AboutusComponent,
     RoadmapitemComponent,
+    LoginComponent,
+    SignupComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

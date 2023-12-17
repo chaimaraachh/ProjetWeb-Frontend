@@ -51,8 +51,8 @@ export class QuizComponent implements OnInit {
       $event.returnValue = 'Are you sure you want to leave? Your progress may be lost.';
   }
 
-  onSubmit() {
-    console.log(this.quizForm.value);
+  submitQuiz() {
+    alert('Form submitted!');
     // Add logic to handle form submission here
   }
 

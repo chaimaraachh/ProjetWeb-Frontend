@@ -10,5 +10,6 @@
     <p><strong>Description:</strong> {{ milestone.description }}</p>
     <p *ngIf="milestone.courseLink"><strong>Course Link:</strong> <a [href]="milestone.courseLink" target="_blank">{{ milestone.courseLink }}</a></p>
     <p *ngIf="milestone.certificationSuggestion"><strong>Certification Suggestion:</strong> {{ milestone.certificationSuggestion }}</p>
+    <button class="btn btn-primary"  (click)="navigateToQuiz()">Take Test</button>
   </div>
 </div>

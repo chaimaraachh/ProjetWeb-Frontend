@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RoadmapserviceService } from '../roadmapservice.service';
 import { Milestone } from '../milestone';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-milestone',
@@ -14,10 +15,13 @@ export class MilestoneComponent  {
 
   constructor(
     private route: ActivatedRoute,
-    private roadmapService: RoadmapserviceService
+    private roadmapService: RoadmapserviceService,
+    private router: Router
   ) {}
-
-
+  navigateToQuiz() {
+    this.router.navigate(['/quiz']);
+  }
+  
   toggleDetails(): void {
     this.showDetails = !this.showDetails;
   }

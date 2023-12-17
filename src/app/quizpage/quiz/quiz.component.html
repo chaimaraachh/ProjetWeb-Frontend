@@ -1,10 +1,9 @@
 <div>
-<p>Time Remaining: {{ remainingTime }} seconds</p>
-
-<form [formGroup]="quizForm" (ngSubmit)="onSubmit()">
-    <div *ngFor="let question of questions">
-        <app-question [question]="question"></app-question>
-    </div>
-    <button type="submit">Submit</button>
-</form>
+    <p>Time Remaining: {{ remainingTime }} seconds</p>
+    <form #quiz="ngForm" [formGroup]="quizForm" (ngSubmit)="submitQuiz()">
+        <div *ngFor="let question of questions">
+            <app-question [question]="question"></app-question>
+        </div>
+        <button [disabled]="quiz.invalid" class="btn btn-primary"> Submit </button>
+    </form>
 </div>

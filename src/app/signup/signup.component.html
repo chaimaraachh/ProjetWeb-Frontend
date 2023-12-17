@@ -1,0 +1,71 @@
+<div>
+    <form #singupForm="ngForm">
+        <label for="firstname"> firstname :</label>
+        <input firstname 
+            required 
+            type="text" 
+            ngModel 
+            name="firstname"
+            class="form-control"
+            id="firstname"
+            #firstname="ngModel">
+        <div class="alert alert-danger" *ngIf="!firstname.valid && firstname.touched">
+            le firstname est obligatoire
+        </div>
+        <label for="lastname"> lastname :</label>
+        <input lastname 
+            required 
+            type="text" 
+            ngModel 
+            name="lastname"
+            class="form-control"
+            id="lastname"
+            #lastname="ngModel">
+        <div class="alert alert-danger" *ngIf="!lastname.valid && lastname.touched">
+            le lastname est obligatoire
+        </div>
+
+        <label for="email"> email :</label>
+        <input email 
+            required 
+            type="text" 
+            ngModel 
+            name="email"
+            class="form-control"
+            id="email"
+            #email="ngModel">
+            
+            <div class="alert alert-danger" *ngIf="!email.valid && email.touched">
+                l'email n'est pas valide
+            </div>
+        
+        <label for="password"> password :</label>
+        <input password 
+            required 
+            minlength="4"
+            type="password" 
+            ngModel 
+            name="password"
+            class="form-control"
+            id="password"
+            #password="ngModel">
+        <div class="alert alert-danger" *ngIf="!password.valid && password.touched">
+            le password doit contenir au moins 4 caractères
+        </div>
+        <label for="passwordconfirm"> confirm password :</label>
+        <input password 
+            required 
+            minlength="4"
+            type="password" 
+            ngModel 
+            name="passwordconfirm"
+            class="form-control"
+            id="passwordconfirm"
+            #passwordconfirm="ngModel">
+        <div class="alert alert-danger" *ngIf="!(passwordconfirm.value == password.value) && passwordconfirm.touched">
+            le password doit etre identique
+        </div>
+        <button [disabled]="singupForm.invalid" class="btn btn-primary" (click)="singUp(singupForm)"> sign up </button>
+    </form>
+    <p>already have an account?</p><button (click)="navigateToLogin()">login</button>
+</div>
