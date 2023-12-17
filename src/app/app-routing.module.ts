@@ -6,7 +6,6 @@ import { ScoringdashboardComponent } from './scoringdashboard/scoringdashboard.c
 import { HomedescriptionComponent } from './homedescription/homedescription.component';
 import { RoadmaplistComponent } from './roadmaps/roadmaplist/roadmaplist.component';
 import { QuizComponent } from './quizpage/quiz/quiz.component';
-import { LeavePageGuardService } from './services/leave-page-guard.service';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -14,7 +13,7 @@ const routes: Routes = [
   { path: 'roadmaps', component: RoadmaplistComponent },
   { path: 'aboutus', component: AboutusComponent },
   { path: 'scoringdashboard', component: ScoringdashboardComponent  },
-  { path: 'quiz', component: QuizComponent  , canDeactivate: [LeavePageGuardService]  },
+  { path: 'quiz', component: QuizComponent  },
 
 ];
 
