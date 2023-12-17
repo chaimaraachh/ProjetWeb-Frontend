@@ -1,0 +1,14 @@
+<div *ngIf="milestone" [class.details-active]="showDetails" class="card custom-dark-list-item">
+  <div class="card-body">
+    <div class="content">
+      <h2 class="card-title">{{ milestone.title }}</h2>
+      <p class="card-text">{{ milestone.description }}</p>
+    </div>
+    <i class="gg-chevron-down-o chevron" (click)="toggleDetails()"></i>
+  </div>
+  <div *ngIf="showDetails" class="details-section">
+    <p><strong>Description:</strong> {{ milestone.description }}</p>
+    <p *ngIf="milestone.courseLink"><strong>Course Link:</strong> <a [href]="milestone.courseLink" target="_blank">{{ milestone.courseLink }}</a></p>
+    <p *ngIf="milestone.certificationSuggestion"><strong>Certification Suggestion:</strong> {{ milestone.certificationSuggestion }}</p>
+  </div>
+</div>

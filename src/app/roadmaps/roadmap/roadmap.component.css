@@ -1,0 +1,56 @@
+.page-header {
+  text-align: center;
+  margin-bottom: 25px;
+  padding: 20px;
+  background-color: #343a40;
+  color: #ffffff;
+}
+
+.page-header h1 {
+  font-size: 2rem;
+}
+
+.page-header p {
+  font-style: italic;
+  font-size: 1.2rem;  
+  margin-bottom: 25px;
+
+}
+
+.custom-dark-list {
+  background-color: #343a40;
+  color: #ffffff;
+  padding: 15px;
+  max-width: 700px;
+  margin: 0 auto;
+  border-radius: 10px;
+}
+
+.custom-dark-list-item {
+  background-color: #343a40;
+  border: 1px solid #ffffff;
+  margin-bottom: 10px;
+  padding: 15px;
+  transition: background-color 0.3s;
+  border-radius: 8px;
+}
+
+.custom-dark-list-item:hover {
+  background-color: #495057;
+}
+
+.progress {
+  background-color: #ddd;
+  border-radius: 5px;
+  max-width: 50%;
+  margin: auto;
+  margin-top: 25px;
+
+}
+
+.progress-bar {
+  background-color: #4caf50;
+  height: 100%;
+  border-radius: 5px;
+  transition: width 0.5s ease-in-out;
+}

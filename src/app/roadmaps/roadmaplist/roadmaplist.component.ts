@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-roadmaplist',
@@ -14,5 +15,9 @@ export class RoadmaplistComponent {
     { id: 3, name: 'Data Science', image: 'assets/images/data.jpg' },
     { id: 4, name: 'DevOps', image: 'assets/images/devops.jpg' }
   ];
-  
+  constructor(private router: Router) {}
+
+  navigateToRoadmap(roadmapName: string): void {
+    this.router.navigate(['/roadmap'], { queryParams: { field: roadmapName } });
+  }
 }

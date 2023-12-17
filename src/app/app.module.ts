@@ -8,9 +8,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { RoadmapComponent } from './roadmaps/roadmap/roadmap.component';
 import { RoadmaplistComponent } from './roadmaps/roadmaplist/roadmaplist.component';
-import { MilestoneComponent } from './milestones/milestone/milestone.component';
-import { MilestonelistComponent } from './milestones/milestonelist/milestonelist.component';
-import { MilestonedetailsComponent } from './milestones/milestonedetails/milestonedetails.component';
+import { MilestoneComponent } from './roadmaps/milestone/milestone.component';
 import { QuizComponent } from './quizpage/quiz/quiz.component';
 import { QuestionComponent } from './quizpage/question/question.component';
 import { SearchComponent } from './search/search.component';
@@ -28,8 +26,6 @@ import { RoadmapitemComponent } from './roadmaps/roadmapitem/roadmapitem.compone
     RoadmapComponent,
     RoadmaplistComponent,
     MilestoneComponent,
-    MilestonelistComponent,
-    MilestonedetailsComponent,
     QuizComponent,
     QuestionComponent,
     SearchComponent,
@@ -37,7 +33,7 @@ import { RoadmapitemComponent } from './roadmaps/roadmapitem/roadmapitem.compone
     MovingImagesComponent,
     ScoringdashboardComponent,
     AboutusComponent,
-    RoadmapitemComponent
+    RoadmapitemComponent,
   ],
   imports: [
     BrowserModule,
