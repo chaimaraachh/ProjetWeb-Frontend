@@ -19,7 +19,7 @@ export class MilestoneComponent  {
     private router: Router
   ) {}
   navigateToQuiz() {
-    this.router.navigate(['/quiz']);
+    this.router.navigate(['/quiz/' + this.milestone['id']]);
   }
   
   toggleDetails(): void {

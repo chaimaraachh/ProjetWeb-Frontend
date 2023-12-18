@@ -24,7 +24,19 @@
         <div class="alert alert-danger" *ngIf="!lastname.valid && lastname.touched">
             le lastname est obligatoire
         </div>
-
+        <label for="country">Country:</label>
+        <select 
+            required 
+            [(ngModel)]="selectedCountry"
+            name="country"
+            class="form-control"
+            id="country">
+            <!-- Default option -->
+            <option value="">Select a country</option>        
+            <!-- Options generated from the countries array -->
+            <option *ngFor="let country of countries" [value]="country.name.common">{{ country.name.common }}</option>
+        </select>
+        
         <label for="email"> email :</label>
         <input email 
             required 

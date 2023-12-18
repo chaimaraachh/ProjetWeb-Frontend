@@ -2,7 +2,7 @@
   <h3>{{ question.questionText }}</h3>
   <ul>
     <li *ngFor="let option of question.options">
-      <input type="radio" [name]="'question_' + question.id" [value]="option"> {{ option }}
+      <input type="radio" [name]="'question_' + question.milestoneId + '_' + question.id" [value]="option"> {{ option }}
     </li>
   </ul>
 </div>

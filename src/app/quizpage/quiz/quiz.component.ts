@@ -1,6 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Question } from '../question/question';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-quiz',
@@ -9,17 +10,28 @@ import { Question } from '../question/question';
 })
 export class QuizComponent implements OnInit {
   //get the questions 
-  questions: Question[] = [
-    new Question(1,'What is the capital of France?',['New York', 'London', 'Paris', 'Berlin'],'Paris'),
-    new Question(2,'What is the capital of France?',['New York', 'London', 'Paris', 'Berlin'],'Paris'),
-  ];
-
+  milestoneid: number=1;
   quizForm: FormGroup;
-  constructor(private fb: FormBuilder) {
+  questions: Question[] = [
+    new Question(1,1,'linux?',['New York', 'London', 'Paris', 'Berlin'],'Paris'),
+    new Question(1,2,'linux?',['New York', 'London', 'Paris', 'Berlin'],'Paris'),
+    new Question(1,3,'linux?',['New York', 'London', 'Paris', 'Berlin'],'Paris'),
+    new Question(1,4,'linux?',['New York', 'London', 'Paris', 'Berlin'],'Paris'),
+    new Question(2,1,'python?',['New York', 'London', 'Paris', 'Berlin'],'Paris'),
+    new Question(2,2,'python?',['New York', 'London', 'Paris', 'Berlin'],'Paris'),
+    new Question(2,3,'python?',['New York', 'London', 'Paris', 'Berlin'],'Paris'),
+    new Question(2,4,'python?',['New York', 'London', 'Paris', 'Berlin'],'Paris'),
+  ];
+  constructor(
+    private fb: FormBuilder,
+    private acr: ActivatedRoute,
+    private router: Router) {
     this.quizForm = this.fb.group({});
+    this.milestoneid = parseInt(this.acr.snapshot.params['milestoneid']);
   }
 
   ngOnInit() {
+    this.questions = this.questions.filter(question => question.milestoneId === this.milestoneid);
     this.questions.forEach((question, index) => {
       this.quizForm.addControl('question' + index, this.fb.control(''));
     });
