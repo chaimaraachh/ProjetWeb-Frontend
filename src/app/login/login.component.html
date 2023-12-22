@@ -28,6 +28,6 @@
         <div class="alert alert-danger" *ngIf="!password.valid && password.touched">
             le password doit contenir au moins 4 caractères
         </div>
-        <button [disabled]="loginForm.invalid" class="btn btn-primary" (click)="login(loginForm)"> Login </button>
+        <button [disabled]="loginForm.invalid" class="btn btn-primary" (click)="login(email.value, password.value)"> Login </button>
     </form>
 </div>
