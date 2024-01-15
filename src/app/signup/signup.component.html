@@ -1,5 +1,17 @@
 <div>
     <form #singupForm="ngForm">
+        <label for="username"> username :</label>
+        <input username 
+            required 
+            type="text" 
+            ngModel 
+            name="username"
+            class="form-control"
+            id="username"
+            #username="ngModel">
+        <div class="alert alert-danger" *ngIf="!username.valid && username.touched">
+            le username est obligatoire
+        </div>
         <label for="firstname"> firstname :</label>
         <input firstname 
             required 
