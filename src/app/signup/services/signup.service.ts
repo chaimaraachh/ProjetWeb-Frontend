@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { backendApiUrlSignup } from '../config/config';
+import { backendApiUrlSignup } from '../../config/config';
 import { Observable } from 'rxjs';
 import { NgForm } from '@angular/forms';
 

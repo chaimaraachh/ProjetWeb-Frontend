@@ -17,7 +17,7 @@ import { MovingImagesComponent } from './moving-images/moving-images.component';
 import { ScoringdashboardComponent } from './scoringdashboard/scoringdashboard.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { RoadmapitemComponent } from './roadmaps/roadmapitem/roadmapitem.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './authentication/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { SignupComponent } from './signup/signup.component';
 import { ProfileComponent } from './profile/profile.component';
