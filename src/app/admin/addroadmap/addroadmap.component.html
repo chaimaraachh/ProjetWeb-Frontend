@@ -1,0 +1,56 @@
+<div>
+    <form #addRoadmapForm="ngForm">
+        <label for="roadmapID"> roadmapID :</label>
+        <input roadmapID 
+            required 
+            type="text" 
+            ngModel 
+            name="roadmapID"
+            class="form-control"
+            id="roadmapID"
+            #roadmapID="ngModel">
+        <div class="alert alert-danger" *ngIf="!roadmapID.valid && roadmapID.touched">
+            le roadmapID est obligatoire
+        </div>
+
+        <label for="title"> title :</label>
+        <input title 
+            required 
+            type="text" 
+            ngModel 
+            name="title"
+            class="form-control"
+            id="title"
+            #title="ngModel">
+        <div class="alert alert-danger" *ngIf="!title.valid && title.touched">
+            le title est obligatoire
+        </div>
+
+        <label for="domain"> domain :</label>
+        <input domain 
+            required 
+            type="text" 
+            ngModel 
+            name="domain"
+            class="form-control"
+            id="domain"
+            #domain="ngModel">
+        <div class="alert alert-danger" *ngIf="!domain.valid && domain.touched">
+            le domain est obligatoire
+        </div>
+        <label for="description"> description :</label>
+        <input description 
+            required 
+            type="text" 
+            ngModel 
+            name="description"
+            class="form-control"
+            id="description"
+            #description="ngModel">
+        <div class="alert alert-danger" *ngIf="!description.valid && description.touched">
+            le description est obligatoire
+        </div>
+        
+        <button [disabled]="addRoadmapForm.invalid" class="btn btn-primary" (click)="addRoadmap()"> addRoadmap </button>
+    </form>
+</div>

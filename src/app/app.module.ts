@@ -22,6 +22,8 @@ import { FormsModule } from '@angular/forms';
 import { SignupComponent } from './signup/signup.component';
 import { ProfileComponent } from './profile/profile.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AdminpanelComponent } from './admin/adminpanel/adminpanel.component';
+import { AddroadmapComponent } from './admin/addroadmap/addroadmap.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,8 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     SignupComponent,
     ProfileComponent,
+    AdminpanelComponent,
+    AddroadmapComponent,
   ],
   imports: [
     BrowserModule,

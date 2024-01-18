@@ -8,6 +8,8 @@ import { RoadmaplistComponent } from './roadmaps/roadmaplist/roadmaplist.compone
 import { QuizComponent } from './quizpage/quiz/quiz.component';
 import { LoginComponent } from './authentication/login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { AdminpanelComponent } from './admin/adminpanel/adminpanel.component';
+import { AddroadmapComponent } from './admin/addroadmap/addroadmap.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -19,6 +21,8 @@ const routes: Routes = [
   { path: 'roadmap', component: RoadmapComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent},
+  { path: 'adminpanel', component: AdminpanelComponent },
+  { path: 'addroadmap', component: AddroadmapComponent },
 ];
 
 @NgModule({
