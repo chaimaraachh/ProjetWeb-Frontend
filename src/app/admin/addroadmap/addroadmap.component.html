@@ -4,7 +4,7 @@
         <input roadmapID 
             required 
             type="text" 
-            ngModel 
+            [(ngModel)]="roadmap.roadmapID" 
             name="roadmapID"
             class="form-control"
             id="roadmapID"
@@ -17,7 +17,7 @@
         <input title 
             required 
             type="text" 
-            ngModel 
+            [(ngModel)]="roadmap.title" 
             name="title"
             class="form-control"
             id="title"
@@ -30,7 +30,7 @@
         <input domain 
             required 
             type="text" 
-            ngModel 
+            [(ngModel)]="roadmap.domain" 
             name="domain"
             class="form-control"
             id="domain"
@@ -42,7 +42,7 @@
         <input description 
             required 
             type="text" 
-            ngModel 
+            [(ngModel)]="roadmap.description" 
             name="description"
             class="form-control"
             id="description"

@@ -1,5 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ApiUrlRoadmaps } from 'src/app/config/config';
+import { Roadmap } from 'src/app/roadmaps/roadmap';
+import { AdminService } from '../admin.service';
 
 @Component({
   selector: 'app-addroadmap',
@@ -7,15 +10,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./addroadmap.component.css']
 })
 export class AddroadmapComponent implements OnInit{
-  
-    constructor(
-      private http: HttpClient
-    ) { }
-    ngOnInit(): void {
-    }
+  roadmap = new Roadmap();
+  constructor(
+    private http: HttpClient,
+    private adminService: AdminService
+  ) { }
+  ngOnInit(): void {
+  }
 
-    addRoadmap() {
-      console.log("Add Roadmap");
-    }
+  addRoadmap() {
+    this.adminService.post(ApiUrlRoadmaps, this.roadmap).subscribe(response => {
+      console.log(response);
+    }, error => {
+      console.error(error);
+    });
+  }
 
 }

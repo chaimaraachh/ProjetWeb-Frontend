@@ -15,4 +15,8 @@ export class AdminpanelComponent {
     this.router.navigate(['/addroadmap']);
   }
 
+  nagivateToAddMilestone() {
+    this.router.navigate(['/addmilestone']);
+  }
+
 }

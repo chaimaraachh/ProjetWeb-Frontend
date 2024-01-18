@@ -1,0 +1,82 @@
+<div>
+    <form #addMilestoneForm="ngForm">
+        <label for="milestoneId"> milestoneId :</label>
+        <input milestoneId 
+            required 
+            type="text" 
+            [(ngModel)]="milestone.milestoneId" 
+            name="milestoneId"
+            class="form-control"
+            id="milestoneId"
+            #milestoneId="ngModel">
+        <div class="alert alert-danger" *ngIf="!milestoneId.valid && milestoneId.touched">
+            le milestoneId est obligatoire
+        </div>
+
+        <label for="roadmapRoadmapID"> roadmapRoadmapID :</label>
+        <input roadmapRoadmapID 
+            required 
+            type="text" 
+            [(ngModel)]="milestone.roadmapRoadmapID" 
+            name="roadmapRoadmapID"
+            class="form-control"
+            id="roadmapRoadmapID"
+            #roadmapRoadmapID="ngModel">
+        <div class="alert alert-danger" *ngIf="!roadmapRoadmapID.valid && roadmapRoadmapID.touched">
+            le roadmapRoadmapID est obligatoire
+        </div>
+
+        <label for="quizQuizID"> quizQuizID :</label>
+        <input quizQuizID 
+            required 
+            type="text" 
+            [(ngModel)]="milestone.quizQuizID" 
+            name="quizQuizID"
+            class="form-control"
+            id="quizQuizID"
+            #quizQuizID="ngModel">
+        <div class="alert alert-danger" *ngIf="!quizQuizID.valid && quizQuizID.touched">
+            le quizQuizID est obligatoire
+        </div>
+
+        <label for="title"> title :</label>
+        <input title 
+            required 
+            type="text" 
+            [(ngModel)]="milestone.title" 
+            name="title"
+            class="form-control"
+            id="title"
+            #title="ngModel">
+        <div class="alert alert-danger" *ngIf="!title.valid && title.touched">
+            le title est obligatoire
+        </div>
+
+        <label for="orderNumber"> orderNumber :</label>
+        <input orderNumber 
+            required 
+            type="number" 
+            [(ngModel)]="milestone.orderNumber" 
+            name="orderNumber"
+            class="form-control"
+            id="orderNumber"
+            #orderNumber="ngModel">
+        <div class="alert alert-danger" *ngIf="!orderNumber.valid && orderNumber.touched">
+            le orderNumber est obligatoire
+        </div>
+        <label for="description"> description :</label>
+        <input description 
+            required 
+            type="text" 
+            [(ngModel)]="milestone.description" 
+            name="description"
+            class="form-control"
+            id="description"
+            #description="ngModel">
+        <div class="alert alert-danger" *ngIf="!description.valid && description.touched">
+            le description est obligatoire
+        </div>
+        
+        <button [disabled]="addMilestoneForm.invalid" class="btn btn-primary" (click)="addMilestone()"> add milestone </button>
+    </form>
+</div>

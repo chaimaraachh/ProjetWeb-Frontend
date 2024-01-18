@@ -10,6 +10,7 @@ import { LoginComponent } from './authentication/login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { AdminpanelComponent } from './admin/adminpanel/adminpanel.component';
 import { AddroadmapComponent } from './admin/addroadmap/addroadmap.component';
+import { AddmilestoneComponent } from './admin/addmilestone/addmilestone.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent},
   { path: 'adminpanel', component: AdminpanelComponent },
   { path: 'addroadmap', component: AddroadmapComponent },
+  {path : 'addmilestone', component: AddmilestoneComponent}
 ];
 
 @NgModule({

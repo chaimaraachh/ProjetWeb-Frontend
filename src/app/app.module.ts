@@ -24,6 +24,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminpanelComponent } from './admin/adminpanel/adminpanel.component';
 import { AddroadmapComponent } from './admin/addroadmap/addroadmap.component';
+import { AddmilestoneComponent } from './admin/addmilestone/addmilestone.component';
+import { AddquestionsComponent } from './admin/addquestions/addquestions.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,8 @@ import { AddroadmapComponent } from './admin/addroadmap/addroadmap.component';
     ProfileComponent,
     AdminpanelComponent,
     AddroadmapComponent,
+    AddmilestoneComponent,
+    AddquestionsComponent,
   ],
   imports: [
     BrowserModule,

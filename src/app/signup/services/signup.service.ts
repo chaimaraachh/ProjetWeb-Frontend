@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { backendApiUrlSignup } from '../../config/config';
+import { ApiUrlSignup } from '../../config/config';
 import { Observable } from 'rxjs';
 import { NgForm } from '@angular/forms';
 
@@ -14,6 +14,6 @@ export class SignupService {
 
   ) { }
   signup( signUpForm : NgForm):Observable<any>{
-    return this.http.post<any>(backendApiUrlSignup, signUpForm )
+    return this.http.post<any>(ApiUrlSignup, signUpForm )
   }
 }
