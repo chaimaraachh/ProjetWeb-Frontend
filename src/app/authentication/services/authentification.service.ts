@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ApiUrlLogin } from '../../config/config';
+import { ApiUrl } from '../../config/config';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class AuthentificationService {
 
   ) { }
   login( email: string, password: string){
-    return this.http.post<any>(ApiUrlLogin, {"email":email,  "password":password} )
+    return this.http.post<any>(ApiUrl.login, {"email":email,  "password":password} )
   }
 
   isAuthenticated(): boolean {

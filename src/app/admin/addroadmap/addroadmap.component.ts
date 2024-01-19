@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ApiUrlRoadmaps } from 'src/app/config/config';
+import { ApiUrl } from 'src/app/config/config';
 import { Roadmap } from 'src/app/roadmaps/roadmap';
 import { AdminService } from '../admin.service';
 
@@ -19,7 +19,7 @@ export class AddroadmapComponent implements OnInit{
   }
 
   addRoadmap() {
-    this.adminService.post(ApiUrlRoadmaps, this.roadmap).subscribe({
+    this.adminService.post(ApiUrl.roadmaps, this.roadmap).subscribe({
       next: (response) => {
         console.log(response);
       },

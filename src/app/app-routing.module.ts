@@ -12,6 +12,7 @@ import { AdminpanelComponent } from './admin/adminpanel/adminpanel.component';
 import { AddroadmapComponent } from './admin/addroadmap/addroadmap.component';
 import { AddmilestoneComponent } from './admin/addmilestone/addmilestone.component';
 import { AddquestionsComponent } from './admin/addquestions/addquestions.component';
+import { Auth2Guard } from './guard/login.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -21,7 +22,7 @@ const routes: Routes = [
   { path: 'scoringdashboard', component: ScoringdashboardComponent  },
   { path: 'quiz/:milestoneid', component: QuizComponent  },
   { path: 'roadmap', component: RoadmapComponent },
-  { path: 'login', component: LoginComponent },
+  { path: 'login', component: LoginComponent , canActivate: [Auth2Guard]},
   { path: 'signup', component: SignupComponent},
   { path: 'adminpanel', component: AdminpanelComponent },
   { path: 'addroadmap', component: AddroadmapComponent },

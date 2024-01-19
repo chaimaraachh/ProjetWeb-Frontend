@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AdminService } from '../admin.service';
 import { Question } from 'src/app/quizpage/question/question';
-import { ApiUrlQuestions } from 'src/app/config/config';
+import { ApiUrl } from 'src/app/config/config';
 
 @Component({
   selector: 'app-addquestions',
@@ -17,7 +17,7 @@ export class AddquestionsComponent {
   }
 
   addQuestion() {
-    this.adminService.post(ApiUrlQuestions, this.question).subscribe({
+    this.adminService.post(ApiUrl.questions, this.question).subscribe({
       next: (response) => {
         console.log(response);
       },

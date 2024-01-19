@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../admin.service';
-import { ApiUrlMilestones, ApiUrlQuiz, ApiUrlRoadmaps } from 'src/app/config/config';
+import { ApiUrl} from 'src/app/config/config';
 import { MilestoneClass } from 'src/app/roadmaps/milestone';
 
 @Component({
@@ -19,7 +19,7 @@ export class AddmilestoneComponent implements OnInit{
 
   addMilestone() {
     //add milestone
-    this.adminService.post(ApiUrlMilestones, this.milestone).subscribe({
+    this.adminService.post(ApiUrl.milestones, this.milestone).subscribe({
       next: (response) => {
         console.log(response);
       },
@@ -28,7 +28,7 @@ export class AddmilestoneComponent implements OnInit{
       }
     });
     // add quiz associated with milestone
-    this.adminService.post(ApiUrlQuiz, {"quizID": this.milestone.quizQuizID, "title": this.milestone.quizQuizID}).subscribe({
+    this.adminService.post(ApiUrl.quiz, {"quizID": this.milestone.quizQuizID, "title": this.milestone.quizQuizID}).subscribe({
       next: (response) => {
       console.log(response);
     }, 

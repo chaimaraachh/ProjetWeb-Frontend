@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
-import { ApiUrlQuestions } from '../config/config';
+import { ApiUrl } from '../config/config';
 import { Question } from './question/question';
 
 @Injectable({
@@ -30,7 +30,7 @@ export class QuizService {
   }
   */
   getQuestions(quizId : string): Observable<Question[]> {
-    return this.http.get<Question[]>(ApiUrlQuestions+"/by-quiz/"+quizId).pipe(
+    return this.http.get<Question[]>(ApiUrl.questions+"/by-quiz/"+quizId).pipe(
       map((questions: Question[]) => {
         return questions.map(question => {
           if (typeof question.options === 'string') {
