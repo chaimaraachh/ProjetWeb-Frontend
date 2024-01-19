@@ -1,1 +1,57 @@
-<p>addquestions works!</p>
+<div>
+    <form #addQuestionForm="ngForm">
+        <label for="testtestQuiz"> testtestQuiz :</label>
+        <input testtestQuiz 
+            required 
+            type="text" 
+            [(ngModel)]="question.testQuiz" 
+            name="testtestQuiz"
+            class="form-control"
+            id="testtestQuiz"
+            #testtestQuiz="ngModel">
+        <div class="alert alert-danger" *ngIf="!testtestQuiz.valid && testtestQuiz.touched">
+            le testtestQuiz est obligatoire
+        </div>
+        
+        <label for="questionId"> content :</label>
+        <input questionId 
+            required 
+            type="text" 
+            [(ngModel)]="question.content" 
+            name="questionId"
+            class="form-control"
+            id="questionId"
+            #questionId="ngModel">
+        <div class="alert alert-danger" *ngIf="!questionId.valid && questionId.touched">
+            le questionId est obligatoire
+        </div>
+
+        <label for="roadmapRoadmapID"> options :</label>
+        <input roadmapRoadmapID 
+            required 
+            type="text" 
+            [(ngModel)]="question.options" 
+            name="roadmapRoadmapID"
+            class="form-control"
+            id="roadmapRoadmapID"
+            #roadmapRoadmapID="ngModel">
+        <div class="alert alert-danger" *ngIf="!roadmapRoadmapID.valid && roadmapRoadmapID.touched">
+            le roadmapRoadmapID est obligatoire
+        </div>
+
+        <label for="testQuiz"> correctOption :</label>
+        <input testQuiz 
+            required 
+            type="number" 
+            [(ngModel)]="question.correctOption" 
+            name="testQuiz"
+            class="form-control"
+            id="testQuiz"
+            #testQuiz="ngModel">
+        <div class="alert alert-danger" *ngIf="!testQuiz.valid && testQuiz.touched">
+            le testQuiz est obligatoire
+        </div>
+
+        <button [disabled]="addQuestionForm.invalid" class="btn btn-primary" (click)="addQuestion()"> add question </button>
+    </form>
+</div>

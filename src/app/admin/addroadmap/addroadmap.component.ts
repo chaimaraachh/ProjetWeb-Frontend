@@ -19,11 +19,14 @@ export class AddroadmapComponent implements OnInit{
   }
 
   addRoadmap() {
-    this.adminService.post(ApiUrlRoadmaps, this.roadmap).subscribe(response => {
-      console.log(response);
-    }, error => {
-      console.error(error);
-    });
+    this.adminService.post(ApiUrlRoadmaps, this.roadmap).subscribe({
+      next: (response) => {
+        console.log(response);
+      },
+      error: (error) => {
+        console.error(error);
+      }
+    });    
   }
 
 }

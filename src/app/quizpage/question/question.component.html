@@ -1,8 +1,8 @@
 <div>
-  <h3>{{ question.questionText }}</h3>
+  <h3>{{ question.content }}</h3>
   <ul>
     <li *ngFor="let option of question.options">
-      <input type="radio" [name]="'question_' + question.milestoneId + '_' + question.id" [value]="option"> {{ option }}
+      <input type="radio" [name]="'question_' + question.testQuiz + '_' + question.questionID" [value]="option"> {{ option }}
     </li>
   </ul>
 </div>

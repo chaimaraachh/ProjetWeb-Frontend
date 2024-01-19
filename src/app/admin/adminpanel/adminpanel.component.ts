@@ -19,4 +19,7 @@ export class AdminpanelComponent {
     this.router.navigate(['/addmilestone']);
   }
 
+  nagivateToAddQuestion() {
+    this.router.navigate(['/addquestion']);
+  }
 }

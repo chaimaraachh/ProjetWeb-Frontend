@@ -13,14 +13,8 @@ export class QuizComponent implements OnInit {
   milestoneid: number=1;
   quizForm: FormGroup;
   questions: Question[] = [
-    new Question(1,1,'linux?',['New York', 'London', 'Paris', 'Berlin'],'Paris'),
-    new Question(1,2,'linux?',['New York', 'London', 'Paris', 'Berlin'],'Paris'),
-    new Question(1,3,'linux?',['New York', 'London', 'Paris', 'Berlin'],'Paris'),
-    new Question(1,4,'linux?',['New York', 'London', 'Paris', 'Berlin'],'Paris'),
-    new Question(2,1,'python?',['New York', 'London', 'Paris', 'Berlin'],'Paris'),
-    new Question(2,2,'python?',['New York', 'London', 'Paris', 'Berlin'],'Paris'),
-    new Question(2,3,'python?',['New York', 'London', 'Paris', 'Berlin'],'Paris'),
-    new Question(2,4,'python?',['New York', 'London', 'Paris', 'Berlin'],'Paris'),
+    new Question(),
+    new Question(),
   ];
   constructor(
     private fb: FormBuilder,
@@ -31,7 +25,7 @@ export class QuizComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.questions = this.questions.filter(question => question.milestoneId === this.milestoneid);
+    //this.questions = this.questions.filter(question => question.testQuizQuizID === this.milestoneid);
     this.questions.forEach((question, index) => {
       this.quizForm.addControl('question' + index, this.fb.control(''));
     });

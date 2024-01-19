@@ -1,9 +1,15 @@
 export class Question {
-  constructor(
-    public milestoneId: Number,
-    public id: number,
-    public questionText: string,
-    public options: string[],
-    public answer: string
-  ) {}
+  questionID : number;
+  content : string;
+  options : string[];
+  testQuiz : string;
+  correctOption : number;
+  constructor() {
+    this.questionID = 0;
+    this.content = '';
+    this.options = [];
+    this.testQuiz = '';
+    this.correctOption = 0;
+  }
+
 }
