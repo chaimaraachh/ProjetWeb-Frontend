@@ -34,7 +34,7 @@ export class RoadmapserviceService {
     this.milestoneSubject.next(milestone);
   }
 
-  getMilestone(id: number): Milestone | null {
+  getMilestone(id: string): Milestone | null {
     console.log(this.currentMilestone);
     return this.currentMilestones.find(m => m.id === id) || null;
   }

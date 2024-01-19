@@ -1,5 +1,5 @@
 export interface Milestone {
-    id: number;
+    id: string;
     title: string;
     description: string;
     courseLink: string;

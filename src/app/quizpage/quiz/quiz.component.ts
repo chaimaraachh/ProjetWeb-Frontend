@@ -2,6 +2,7 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Question } from '../question/question';
 import { ActivatedRoute, Router } from '@angular/router';
+import { QuizService } from '../quiz.service';
 
 @Component({
   selector: 'app-quiz',
@@ -10,21 +11,29 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class QuizComponent implements OnInit {
   //get the questions 
-  milestoneid: number=1;
+  milestoneid: string="Unsupervised Learning Techniques";
   quizForm: FormGroup;
-  questions: Question[] = [
-    new Question(),
-    new Question(),
-  ];
+  questions: Question[];
   constructor(
     private fb: FormBuilder,
     private acr: ActivatedRoute,
+    private quizService: QuizService,
     private router: Router) {
+    this.questions = [];
     this.quizForm = this.fb.group({});
-    this.milestoneid = parseInt(this.acr.snapshot.params['milestoneid']);
+    this.milestoneid = this.acr.snapshot.params['milestoneid'];
   }
 
   ngOnInit() {
+    this.quizService.getQuestions(this.milestoneid).subscribe({
+      next: (response) => {
+        console.log(response);
+        this.questions = response;
+      },
+      error: (error) => {
+        console.error(error);
+      }
+    });
     //this.questions = this.questions.filter(question => question.testQuizQuizID === this.milestoneid);
     this.questions.forEach((question, index) => {
       this.quizForm.addControl('question' + index, this.fb.control(''));
