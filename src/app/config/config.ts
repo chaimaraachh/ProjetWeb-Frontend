@@ -5,5 +5,6 @@ export const ApiUrl = {
     roadmaps: 'http://localhost:3000/roadmaps',
     milestones: 'http://localhost:3000/milestone',
     quiz: 'http://localhost:3000/quiz',
-    questions: 'http://localhost:3000/questions'
+    questions: 'http://localhost:3000/questions',
+    verifyQuiz: 'http://localhost:3000/questions/verify-quiz',
 };

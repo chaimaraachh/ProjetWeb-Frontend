@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'quiz/:milestoneid', component: QuizComponent  },
   { path: 'roadmap', component: RoadmapComponent },
   { path: 'login', component: LoginComponent , canActivate: [Auth2Guard]},
-  { path: 'signup', component: SignupComponent},
+  { path: 'signup', component: SignupComponent , canActivate: [Auth2Guard]},
   { path: 'adminpanel', component: AdminpanelComponent },
   { path: 'addroadmap', component: AddroadmapComponent },
   {path : 'addmilestone', component: AddmilestoneComponent},

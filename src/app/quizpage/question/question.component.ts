@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import {Question} from "./question";
 
 @Component({
@@ -8,4 +8,11 @@ import {Question} from "./question";
 })
 export class QuestionComponent {
   @Input() question!: Question;
+  @Output() answer = new EventEmitter<number>();
+  selectedOptionIndex: number | null = null;
+
+  onSelectionChange(index: number) {
+    this.selectedOptionIndex = index;
+    this.answer.emit(index);
+  }
 }
