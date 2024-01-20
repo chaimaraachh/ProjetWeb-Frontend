@@ -21,11 +21,8 @@ login(email: string, password: string) {
     next: (response) => {
       const token = response.token;
       localStorage.setItem('token', token);
-      alert('Vous êtes connecté');
-      alert(token);
     },
     error: (error) => {
-      alert(error.error.message)
       console.log(error);
     }
   });

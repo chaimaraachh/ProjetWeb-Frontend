@@ -8,7 +8,7 @@ import { AuthentificationService } from '../authentication/services/authentifica
 })
 export class NavbarComponent {
 constructor(
-  private authentificationService: AuthentificationService
+  public authentificationService: AuthentificationService
   ) 
   { };
 

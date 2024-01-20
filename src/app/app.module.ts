@@ -21,11 +21,12 @@ import { LoginComponent } from './authentication/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { SignupComponent } from './signup/signup.component';
 import { ProfileComponent } from './profile/profile.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AdminpanelComponent } from './admin/adminpanel/adminpanel.component';
 import { AddroadmapComponent } from './admin/addroadmap/addroadmap.component';
 import { AddmilestoneComponent } from './admin/addmilestone/addmilestone.component';
 import { AddquestionsComponent } from './admin/addquestions/addquestions.component';
+import { AuthInterceptor } from './authentication/interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,13 @@ import { AddquestionsComponent } from './admin/addquestions/addquestions.compone
     HttpClientModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
