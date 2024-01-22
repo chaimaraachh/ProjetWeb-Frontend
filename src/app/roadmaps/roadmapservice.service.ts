@@ -1,45 +1,41 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { Milestone } from './milestone';
-import { DEVOPS_MILESTONES, AI_MILESTONES, DATA_SCIENCE_MILESTONES } from './milestonedata';
+import { BehaviorSubject, Observable, map } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Roadmap} from './roadmap.js'; 
+import { ApiUrl } from '../config/config';
+import { Milestone } from './milestone.js';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RoadmapserviceService {
-
-  private milestoneSubject = new BehaviorSubject<Milestone | null>(null);
-  currentMilestone = this.milestoneSubject.asObservable();
-  private currentMilestones: Milestone[] = [];
-
-  constructor() { }
-
-  setCurrentRoadmapType(roadmapType: string) {
-    switch (roadmapType) {
-      case 'DevOps':
-        this.currentMilestones = DEVOPS_MILESTONES;
-        break;
-      case 'AI':
-        this.currentMilestones = AI_MILESTONES;
-        break;
-      case 'Data Science':
-        this.currentMilestones = DATA_SCIENCE_MILESTONES;
-        break;
-      default:
-        this.currentMilestones = [];
-    }
+  private roadmapSubject = new BehaviorSubject<Roadmap[] | null>(null);
+  roadmaps$ = this.roadmapSubject.asObservable();
+  
+  constructor(private http: HttpClient) {
+    this.loadRoadmaps(); 
   }
 
-  changeMilestone(milestone: Milestone) {
-    this.milestoneSubject.next(milestone);
+  private loadRoadmaps() {
+    this.http.get<Roadmap[]>(ApiUrl.roadmaps) 
+      .subscribe(
+        data => this.roadmapSubject.next(data),
+        error => console.error('Error loading roadmaps:', error)
+      );
   }
 
-  getMilestone(id: string): Milestone | null {
-    console.log(this.currentMilestone);
-    return this.currentMilestones.find(m => m.id === id) || null;
+  getRoadmapById(id: string): Observable<Roadmap | null> {
+    return this.roadmaps$.pipe(
+      map((roadmaps: Roadmap[] | null) => roadmaps?.find((r: Roadmap) => r.id === id) || null)
+    );
   }
 
-  getCurrentMilestones(): Milestone[] {
-    return this.currentMilestones;
+  getMilestone(roadmapId: string, milestoneId: string): Milestone | null {
+    const roadmap = this.roadmapSubject.getValue()?.find(r => r.id === roadmapId);
+    return roadmap?.milestones.find(m => m.milestoneId === milestoneId) || null;
+  }
+
+  getAllRoadmaps(): Observable<Roadmap[]> {
+    return this.http.get<Roadmap[]>(ApiUrl.roadmaps); 
   }
 }

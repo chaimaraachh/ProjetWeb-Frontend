@@ -7,7 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class RoadmapitemComponent {
   @Input()
-  image!: string;
-  @Input()
   name!: string;
+
+  image = 'assets/images/'+name+'.jpg'
 }

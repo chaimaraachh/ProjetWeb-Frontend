@@ -1,4 +1,3 @@
-<!-- Add the title and description using Bootstrap classes -->
 <div class="container mt-5 text-light bg-dark p-4">
   <h1 class="display-4 text-center mb-4">Explore Our Learning Paths</h1>
   <div class="row justify-content-center">
@@ -9,10 +8,9 @@
     </div>
   </div>
 
-  <!-- Display the roadmap grid -->
   <div class="roadmap-grid">
     <div *ngFor="let roadmap of roadmaps" (click)="navigateToRoadmap(roadmap.name)">
-      <app-roadmapitem [image]="roadmap.image" [name]="roadmap.name"></app-roadmapitem>
+      <app-roadmapitem  [name]="roadmap.id"></app-roadmapitem>
     </div>
 </div>
 

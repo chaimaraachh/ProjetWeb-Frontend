@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RoadmapserviceService } from '../roadmapservice.service';
-import { Milestone } from '../milestone';
+import { Roadmap} from '.././roadmap.js'; 
+import { Milestone } from '.././milestone.js';
 
 @Component({
   selector: 'app-roadmap',
@@ -10,9 +11,10 @@ import { Milestone } from '../milestone';
 })
 export class RoadmapComponent implements OnInit {
   milestones: Milestone[] = [];
-  roadmapName: string = '';
+  roadmap: Roadmap | null = null;
   selectedMilestone: Milestone | null = null;
   roadmapProgress: number = 25;
+
   constructor(
     private roadmapService: RoadmapserviceService,
     private route: ActivatedRoute,
@@ -20,22 +22,25 @@ export class RoadmapComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
-      const field = params['field'];
-      this.roadmapName = field || 'Default Roadmap';
-      this.roadmapService.setCurrentRoadmapType(field);
-      this.milestones = this.roadmapService.getCurrentMilestones();
+      const roadmapId = params['roadmapId']; 
+      this.roadmapService.getRoadmapById(roadmapId).subscribe(roadmap => {
+        this.roadmap = roadmap;
+        this.milestones = roadmap?.milestones || [];
+      });
     });
   }
 
   goToMilestone(milestoneId: string): void {
-    const milestone = this.roadmapService.getMilestone(milestoneId);
-    if (milestone !== null) {
-      this.selectedMilestone = milestone;
-      console.log('Selected Milestone:', milestone);
+    if (this.roadmap) {
+      const milestone = this.roadmap.milestones.find(m => m.milestoneId === milestoneId);
+      if (milestone) {
+        this.selectedMilestone = milestone;
+        console.log('Selected Milestone:', milestone);
+      }
     }
   }
 
-  handleMilestoneSelected(selectedMilestone: any): void {
+  handleMilestoneSelected(selectedMilestone: Milestone): void {
     console.log('Selected Milestone:', selectedMilestone);
   }
 }

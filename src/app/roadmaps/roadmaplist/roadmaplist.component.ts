@@ -1,21 +1,31 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { RoadmapserviceService } from '../roadmapservice.service';
 
 @Component({
   selector: 'app-roadmaplist',
   templateUrl: './roadmaplist.component.html',
   styleUrls: ['./roadmaplist.component.css']
 })
-export class RoadmaplistComponent {
-  private imagePath = 'src/assets/images/';
+export class RoadmaplistComponent implements OnInit {
+  roadmaps: any[] = [];
+  errorMessage: string = '';
 
-  roadmaps = [
-    { id: 1, name: 'DevOps', image: 'assets/images/devops.jpg' },
-    { id: 2, name: 'AI', image: 'assets/images/ai.jpg' },
-    { id: 3, name: 'Data Science', image: 'assets/images/data.jpg' },
-    { id: 4, name: 'DevOps', image: 'assets/images/devops.jpg' }
-  ];
-  constructor(private router: Router) {}
+  constructor(
+    private roadmapService: RoadmapserviceService,
+    private router: Router
+  ) {}
+
+  ngOnInit(): void {
+    this.loadRoadmaps();
+  }
+
+  private loadRoadmaps() {
+    this.roadmapService.getAllRoadmaps().subscribe({
+      next: (data) => this.roadmaps = data,
+      error: (err) => this.errorMessage = err
+    });
+  }
 
   navigateToRoadmap(roadmapName: string): void {
     this.router.navigate(['/roadmap'], { queryParams: { field: roadmapName } });
