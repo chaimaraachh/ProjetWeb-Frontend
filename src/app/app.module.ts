@@ -27,6 +27,8 @@ import { AddroadmapComponent } from './admin/addroadmap/addroadmap.component';
 import { AddmilestoneComponent } from './admin/addmilestone/addmilestone.component';
 import { AddquestionsComponent } from './admin/addquestions/addquestions.component';
 import { AuthInterceptor } from './authentication/interceptors/auth.interceptor';
+import { GetDataComponent } from './admin/get-data/get-data.component';
+import { JsonTableComponent } from './json-table/json-table.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,8 @@ import { AuthInterceptor } from './authentication/interceptors/auth.interceptor'
     AddroadmapComponent,
     AddmilestoneComponent,
     AddquestionsComponent,
+    GetDataComponent,
+    JsonTableComponent,
   ],
   imports: [
     BrowserModule,

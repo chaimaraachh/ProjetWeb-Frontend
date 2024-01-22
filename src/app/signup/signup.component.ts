@@ -32,15 +32,16 @@ export class SignupComponent implements OnInit{
   }
   singUp(signUpForm:NgForm) {
     console.log(signUpForm.value);
-    this.signUpService.signup(signUpForm.value).subscribe(
-      (response) => {
+    this.signUpService.signup(signUpForm.value).subscribe({
+      next: (response) => {
         alert('Vous êtes signé');
         console.log(response);
       },
-      (error) => {
+      error : (error) => {
         alert(error.error.message);
         console.log(error);
       }
-    )
+      }
+      );
   }
 }

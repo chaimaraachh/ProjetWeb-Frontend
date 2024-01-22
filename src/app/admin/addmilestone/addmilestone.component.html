@@ -1,29 +1,29 @@
 <div>
     <form #addMilestoneForm="ngForm">
-        <label for="milestoneId"> milestoneId :</label>
-        <input milestoneId 
+        <label for="id"> id :</label>
+        <input id 
             required 
             type="text" 
-            [(ngModel)]="milestone.milestoneId" 
-            name="milestoneId"
+            [(ngModel)]="milestone.id" 
+            name="id"
             class="form-control"
-            id="milestoneId"
-            #milestoneId="ngModel">
-        <div class="alert alert-danger" *ngIf="!milestoneId.valid && milestoneId.touched">
-            le milestoneId est obligatoire
+            id="id"
+            #id="ngModel">
+        <div class="alert alert-danger" *ngIf="!id.valid && id.touched">
+            le id est obligatoire
         </div>
 
-        <label for="roadmapRoadmapID"> roadmapRoadmapID :</label>
-        <input roadmapRoadmapID 
+        <label for="roadmapid"> roadmapid :</label>
+        <input roadmapid 
             required 
             type="text" 
-            [(ngModel)]="milestone.roadmapRoadmapID" 
-            name="roadmapRoadmapID"
+            [(ngModel)]="milestone.roadmapid" 
+            name="roadmapid"
             class="form-control"
-            id="roadmapRoadmapID"
-            #roadmapRoadmapID="ngModel">
-        <div class="alert alert-danger" *ngIf="!roadmapRoadmapID.valid && roadmapRoadmapID.touched">
-            le roadmapRoadmapID est obligatoire
+            id="roadmapid"
+            #roadmapid="ngModel">
+        <div class="alert alert-danger" *ngIf="!roadmapid.valid && roadmapid.touched">
+            le roadmapid est obligatoire
         </div>
 
         <label for="quizQuizID"> quizQuizID :</label>

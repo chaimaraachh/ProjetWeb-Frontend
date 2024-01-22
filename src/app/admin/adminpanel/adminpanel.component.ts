@@ -1,25 +1,30 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ApiUrl } from 'src/app/config/config';
 
 @Component({
   selector: 'app-adminpanel',
   templateUrl: './adminpanel.component.html',
   styleUrls: ['./adminpanel.component.css']
 })
-export class AdminpanelComponent {
-  constructor(
-    private router: Router,
-  ) { }
+export class AdminpanelComponent implements OnInit {
+  activeContent: string = '';
+  apiEndpoint: string = '';
+  constructor() {}
 
-  navigateToAddRoadmap() {
-    this.router.navigate(['/addroadmap']);
+  ngOnInit(): void {}
+
+  showComponent(component: string) {
+    if (component === 'getRoadmaps') {
+      this.apiEndpoint = ApiUrl.roadmaps;
+    } else if (component === 'getMilestones') {
+      this.apiEndpoint = ApiUrl.milestones;
+    } else if (component === 'getQuestions') {
+      this.apiEndpoint = ApiUrl.questions;
+    } else { this.apiEndpoint = ''; }
+    this.activeContent = component;
   }
 
-  nagivateToAddMilestone() {
-    this.router.navigate(['/addmilestone']);
-  }
-
-  nagivateToAddQuestion() {
-    this.router.navigate(['/addquestion']);
+  isContentActive(content: string): boolean {
+    return this.activeContent === content;
   }
 }

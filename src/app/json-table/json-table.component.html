@@ -1,0 +1,17 @@
+<table *ngIf="jsonData && jsonData.length > 0">
+  <thead>
+    <tr>
+      <th *ngFor="let key of getColumnHeaders()">{{ key }}</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of jsonData">
+      <td *ngFor="let key of getColumnHeaders()">{{ row[key] }}</td>
+      <td>
+        <button (click)="deleteRow.emit(row)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div *ngIf="!jsonData || jsonData.length === 0">No data to display.</div>

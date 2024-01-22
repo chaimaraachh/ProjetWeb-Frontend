@@ -1,16 +1,16 @@
 <div>
     <form #addRoadmapForm="ngForm">
-        <label for="roadmapID"> roadmapID :</label>
-        <input roadmapID 
+        <label for="id"> id :</label>
+        <input id 
             required 
             type="text" 
-            [(ngModel)]="roadmap.roadmapID" 
-            name="roadmapID"
+            [(ngModel)]="roadmap.id" 
+            name="id"
             class="form-control"
-            id="roadmapID"
-            #roadmapID="ngModel">
-        <div class="alert alert-danger" *ngIf="!roadmapID.valid && roadmapID.touched">
-            le roadmapID est obligatoire
+            id="id"
+            #id="ngModel">
+        <div class="alert alert-danger" *ngIf="!id.valid && id.touched">
+            le id est obligatoire
         </div>
 
         <label for="title"> title :</label>
