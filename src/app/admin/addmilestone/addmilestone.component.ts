@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../admin.service';
 import { ApiUrl} from 'src/app/config/config';
@@ -11,13 +10,26 @@ import { MilestoneClass } from 'src/app/roadmaps/milestone';
 })
 export class AddmilestoneComponent implements OnInit{
   milestone = new MilestoneClass();
-  constructor(
-    private adminService: AdminService
-  ) { }
+  fields = [
+    { name: 'id', label: 'ID', type: 'text', errorMessage: 'ID is required' },
+    { name: 'roadmapid', label: 'Roadmap ID', type: 'text', errorMessage: 'Roadmap ID is required' },
+    { name: 'quizQuizID', label: 'Quiz ID', type: 'text', errorMessage: 'Quiz ID is required' },
+    { name: 'title', label: 'Title', type: 'text', errorMessage: 'Title is required' },
+    { name: 'orderNumber', label: 'Order Number', type: 'number', errorMessage: 'Order Number is required' },
+    { name: 'description', label: 'Description', type: 'text', errorMessage: 'Description is required' }
+  ];
+
+  constructor(private adminService: AdminService) { }
+
   ngOnInit(): void {
+    
+  }
+  onSubmit(formData: any) {
+    this.milestone = { ...formData };
+    this.addMilestone();
   }
 
-  addMilestone() {
+    addMilestone() {
     //add milestone
     this.adminService.post(ApiUrl.milestones, this.milestone).subscribe({
       next: (response) => {
