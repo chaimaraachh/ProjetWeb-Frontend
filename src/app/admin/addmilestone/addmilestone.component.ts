@@ -28,7 +28,7 @@ export class AddmilestoneComponent implements OnInit{
       }
     });
     // add quiz associated with milestone
-    this.adminService.post(ApiUrl.quiz, {"quizID": this.milestone.quizQuizID, "title": this.milestone.quizQuizID}).subscribe({
+    this.adminService.post(ApiUrl.quiz, {"quizID": this.milestone.quiz.id, "title": this.milestone.quiz.id}).subscribe({
       next: (response) => {
       console.log(response);
     }, 

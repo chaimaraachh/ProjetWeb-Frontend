@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RoadmapserviceService } from '../roadmapservice.service';
+import { Roadmap } from '../roadmap'; // Assuming you have this interface/class
 
 @Component({
   selector: 'app-roadmaplist',
@@ -8,7 +9,7 @@ import { RoadmapserviceService } from '../roadmapservice.service';
   styleUrls: ['./roadmaplist.component.css']
 })
 export class RoadmaplistComponent implements OnInit {
-  roadmaps: any[] = [];
+  roadmaps: Roadmap[] = []; // Use Roadmap type instead of any
   errorMessage: string = '';
 
   constructor(
@@ -27,7 +28,7 @@ export class RoadmaplistComponent implements OnInit {
     });
   }
 
-  navigateToRoadmap(roadmapName: string): void {
-    this.router.navigate(['/roadmap'], { queryParams: { field: roadmapName } });
+  navigateToRoadmap(roadmapId: string): void {
+    this.router.navigate(['/roadmap'], { queryParams: { roadmapId: roadmapId } });
   }
 }

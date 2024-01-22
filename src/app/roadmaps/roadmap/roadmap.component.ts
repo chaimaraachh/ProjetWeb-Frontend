@@ -22,17 +22,34 @@ export class RoadmapComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
-      const roadmapId = params['roadmapId']; 
-      this.roadmapService.getRoadmapById(roadmapId).subscribe(roadmap => {
-        this.roadmap = roadmap;
-        this.milestones = roadmap?.milestones || [];
-      });
+      const roadmapId = params['roadmapId'];
+      if (roadmapId) {
+        this.roadmapService.getRoadmapById(roadmapId).subscribe(
+          roadmap => {
+            this.roadmap = roadmap;
+            console.log('Roadmap:', roadmap);
+            if (roadmap) {
+              this.roadmapService.getMilestonesByRoadmap(roadmapId).subscribe(
+                milestones => {
+                  this.milestones = milestones;
+                  console.log('Milestones:', milestones);
+                },
+                error => console.error('Error fetching milestones:', error)
+              );
+            }
+          },
+          error => console.error('Error fetching roadmap:', error)
+        );
+      } 
     });
   }
+  
+  
+  
 
   goToMilestone(milestoneId: string): void {
     if (this.roadmap) {
-      const milestone = this.roadmap.milestones.find(m => m.milestoneId === milestoneId);
+      const milestone = this.roadmap.milestones.find(m => m.id === milestoneId);
       if (milestone) {
         this.selectedMilestone = milestone;
         console.log('Selected Milestone:', milestone);

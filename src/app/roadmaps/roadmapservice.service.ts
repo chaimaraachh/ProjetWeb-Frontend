@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, map } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, map, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { Roadmap} from './roadmap.js'; 
+import { Roadmap } from './roadmap.js'; 
 import { ApiUrl } from '../config/config';
 import { Milestone } from './milestone.js';
 
@@ -17,7 +17,7 @@ export class RoadmapserviceService {
   }
 
   private loadRoadmaps() {
-    this.http.get<Roadmap[]>(ApiUrl.roadmaps) 
+    this.http.get<Roadmap[]>(ApiUrl.roadmaps)
       .subscribe(
         data => this.roadmapSubject.next(data),
         error => console.error('Error loading roadmaps:', error)
@@ -25,17 +25,25 @@ export class RoadmapserviceService {
   }
 
   getRoadmapById(id: string): Observable<Roadmap | null> {
-    return this.roadmaps$.pipe(
-      map((roadmaps: Roadmap[] | null) => roadmaps?.find((r: Roadmap) => r.id === id) || null)
+    return this.http.get<Roadmap>(`${ApiUrl.roadmaps}/${id}`).pipe(
+      catchError(error => {
+        console.error('Error fetching roadmap:', error);
+        return of(null);
+      })
     );
   }
+  
 
   getMilestone(roadmapId: string, milestoneId: string): Milestone | null {
     const roadmap = this.roadmapSubject.getValue()?.find(r => r.id === roadmapId);
-    return roadmap?.milestones.find(m => m.milestoneId === milestoneId) || null;
+    return roadmap?.milestones.find(m => m.id === milestoneId) || null;
   }
 
   getAllRoadmaps(): Observable<Roadmap[]> {
     return this.http.get<Roadmap[]>(ApiUrl.roadmaps); 
+  }
+
+  getMilestonesByRoadmap(roadmapId: string): Observable<Milestone[]> {
+    return this.http.get<Milestone[]>(`${ApiUrl.milestones}/byRoadmap/${roadmapId}`);
   }
 }

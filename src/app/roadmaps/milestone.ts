@@ -1,40 +1,70 @@
 export interface Milestone {
-  milestoneId: string;
-  passed: boolean;
-  score: number;
-  title: string;
+  id: string; // Changed from milestoneId to id
   description: string;
   orderNumber: number;
   createdAt: string;
   updatedAt: string;
   deletedAt: string | null;
+  validations: any[]; // Specify the type if you have a more specific one
+  recommandedCertifications: any[]; // Same as above
+  recommandedCourses: any[]; // Same as above
+  quiz: {
+    id: number;
+    title: string;
+  };
+  roadmap: {
+    id: string;
+    title: string;
+    domain: string;
+    description: string;
+    createdAt: string;
+    updatedAt: string;
+    deletedAt: string | null;
+  };
 }
-
 export class MilestoneClass implements Milestone {
-  milestoneId: string;
-  passed: boolean;
-  score: number;
-  title: string;
+  id: string;
   description: string;
   orderNumber: number;
   createdAt: string;
   updatedAt: string;
   deletedAt: string | null;
-  roadmapRoadmapID: string;
-  quizQuizID: string;
+  validations: any[]; // Adjust the type as needed
+  recommandedCertifications: any[]; // Adjust the type as needed
+  recommandedCourses: any[]; // Adjust the type as needed
+  quiz: {
+    id: number;
+    title: string;
+  };
+  roadmap: {
+    id: string;
+    title: string;
+    domain: string;
+    description: string;
+    createdAt: string;
+    updatedAt: string;
+    deletedAt: string | null;
+  };
 
   constructor() {
-    // Initialize all properties with default values
-    this.milestoneId = '';
-    this.passed = false;
-    this.score = 0;
-    this.title = '';
+    this.id = '';
     this.description = '';
     this.orderNumber = 0;
     this.createdAt = '';
     this.updatedAt = '';
     this.deletedAt = null;
-    this.roadmapRoadmapID = '';
-    this.quizQuizID = '';
+    this.validations = [];
+    this.recommandedCertifications = [];
+    this.recommandedCourses = [];
+    this.quiz = { id: 0, title: '' };
+    this.roadmap = {
+      id: '',
+      title: '',
+      domain: '',
+      description: '',
+      createdAt: '',
+      updatedAt: '',
+      deletedAt: null
+    };
   }
 }

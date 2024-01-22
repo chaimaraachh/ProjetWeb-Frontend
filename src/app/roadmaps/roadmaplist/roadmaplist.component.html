@@ -9,8 +9,8 @@
   </div>
 
   <div class="roadmap-grid">
-    <div *ngFor="let roadmap of roadmaps" (click)="navigateToRoadmap(roadmap.name)">
-      <app-roadmapitem  [name]="roadmap.id"></app-roadmapitem>
+    <div *ngFor="let roadmap of roadmaps" (click)="navigateToRoadmap(roadmap.id)">
+      <app-roadmapitem [name]="roadmap.id"></app-roadmapitem> 
     </div>
+  </div>
 </div>
-
