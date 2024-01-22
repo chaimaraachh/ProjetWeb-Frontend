@@ -10,9 +10,9 @@ import { startWith, map } from 'rxjs/operators';
 export class MovingImagesComponent implements OnInit {
   imageObservable!: Observable<string>;
   listeImages = [
-    'devops.jpg',
+    'DevOps.jpg',
     'ai.jpg',
-    'data.jpg'
+    'MachineLearning.jpg'
   ];
   currentImage!: string;
 

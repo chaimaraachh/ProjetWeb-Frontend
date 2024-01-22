@@ -29,6 +29,8 @@ import { AddquestionsComponent } from './admin/addquestions/addquestions.compone
 import { AuthInterceptor } from './authentication/interceptors/auth.interceptor';
 import { GetDataComponent } from './admin/get-data/get-data.component';
 import { JsonTableComponent } from './json-table/json-table.component';
+import { UseritemComponent } from './dashboard/useritem/useritem.component';
+import { UserslistComponent } from './dashboard/userslist/userslist.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +57,8 @@ import { JsonTableComponent } from './json-table/json-table.component';
     AddquestionsComponent,
     GetDataComponent,
     JsonTableComponent,
+    UseritemComponent,
+    UserslistComponent,
   ],
   imports: [
     BrowserModule,
