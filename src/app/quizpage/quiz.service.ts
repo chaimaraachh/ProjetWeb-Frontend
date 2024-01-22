@@ -29,7 +29,7 @@ export class QuizService {
     );
   }
   */
-  getQuestions(quizId : string): Observable<Question[]> {
+  getQuestions(quizId : number): Observable<Question[]> {
     return this.http.get<Question[]>(ApiUrl.questions+"/by-quiz/"+quizId).pipe(
       map((questions: Question[]) => {
         return questions.map(question => {

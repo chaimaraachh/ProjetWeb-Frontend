@@ -11,7 +11,7 @@ import { ApiUrl } from 'src/app/config/config';
   styleUrls: ['./quiz.component.css']
 })
 export class QuizComponent implements OnInit {
-  milestoneid: string ;
+  id: number ;
   questions: Question[];
   userAnswers: { [questionID: number]: number } = {};
   quizDuration:number ; // Quiz duration in seconds
@@ -25,12 +25,12 @@ export class QuizComponent implements OnInit {
     private apiService: ApiServiceService
     ) {
     this.questions = [];
-    this.milestoneid = this.acr.snapshot.params['milestoneid'];
+    this.id = this.acr.snapshot.params['id'];
     this.quizDuration = 60; // Quiz duration in seconds
   }
 
   ngOnInit() {
-    this.quizService.getQuestions(this.milestoneid).subscribe({
+    this.quizService.getQuestions(this.id).subscribe({
       next: (response) => {
         //console.log(response);
         this.questions = response;

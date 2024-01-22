@@ -27,8 +27,8 @@ export class RoadmapComponent implements OnInit {
     });
   }
 
-  goToMilestone(milestoneId: string): void {
-    const milestone = this.roadmapService.getMilestone(milestoneId);
+  goToMilestone(id: string): void {
+    const milestone = this.roadmapService.getMilestone(id);
     if (milestone !== null) {
       this.selectedMilestone = milestone;
       console.log('Selected Milestone:', milestone);

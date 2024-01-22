@@ -4,21 +4,22 @@ export interface Milestone {
     description: string;
     courseLink: string;
     certificationSuggestion: string;
+    quizQuizID: number;
   }
 
 export class MilestoneClass {
-  milestoneId: string;
-  roadmapRoadmapID: string
-  quizQuizID: string;
+  id: string;
+  roadmapid: string
+  quizQuizID: number;
   title: string;
   description: string;
   orderNumber: number;
   constructor() {
-    this.milestoneId = '';
-    this.roadmapRoadmapID = '';
+    this.id = '';
+    this.roadmapid = '';
     this.title = '';
     this.description = '';
-    this.quizQuizID = '';
+    this.quizQuizID = 0;
     this.orderNumber = 0;
   }
 }

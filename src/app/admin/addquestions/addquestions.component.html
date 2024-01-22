@@ -26,17 +26,17 @@
             le questionId est obligatoire
         </div>
 
-        <label for="roadmapRoadmapID"> options :</label>
-        <input roadmapRoadmapID 
+        <label for="roadmapid"> options :</label>
+        <input roadmapid 
             required 
             type="text" 
             [(ngModel)]="question.options" 
-            name="roadmapRoadmapID"
+            name="roadmapid"
             class="form-control"
-            id="roadmapRoadmapID"
-            #roadmapRoadmapID="ngModel">
-        <div class="alert alert-danger" *ngIf="!roadmapRoadmapID.valid && roadmapRoadmapID.touched">
-            le roadmapRoadmapID est obligatoire
+            id="roadmapid"
+            #roadmapid="ngModel">
+        <div class="alert alert-danger" *ngIf="!roadmapid.valid && roadmapid.touched">
+            le roadmapid est obligatoire
         </div>
 
         <label for="testQuiz"> correctOption :</label>

@@ -1,10 +1,10 @@
 export class Roadmap {
-    roadmapID: string;
+    id: string;
     title: string;
     domain: string;
     description: string;
     constructor() {
-        this.roadmapID = '';
+        this.id = '';
         this.title = '';
         this.domain = '';
         this.description = '';

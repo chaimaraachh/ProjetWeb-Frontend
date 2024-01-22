@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'roadmaps', component: RoadmaplistComponent },
   { path: 'aboutus', component: AboutusComponent },
   { path: 'scoringdashboard', component: ScoringdashboardComponent  },
-  { path: 'quiz/:milestoneid', component: QuizComponent  },
+  { path: 'quiz/:id', component: QuizComponent  },
   { path: 'roadmap', component: RoadmapComponent },
   { path: 'login', component: LoginComponent , canActivate: [Auth2Guard]},
   { path: 'signup', component: SignupComponent , canActivate: [Auth2Guard]},
