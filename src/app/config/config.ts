@@ -7,4 +7,5 @@ export const ApiUrl = {
     quiz: 'http://localhost:3000/quiz',
     questions: 'http://localhost:3000/questions',
     verifyQuiz: 'http://localhost:3000/questions/verify-quiz',
+    user:'http://localhost:3000/users',
 };

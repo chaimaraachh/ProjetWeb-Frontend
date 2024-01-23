@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ApiUrl } from 'src/app/config/config';
 import { ApiServiceService } from 'src/app/services/api-service.service';
 
 @Component({
@@ -15,10 +16,8 @@ export class AddDataComponent {
   ) { }
   formData: any = {};
   
-  submitForm() {
-    console.log(this.apiEndpoint);
-    
-    if(this.apiEndpoint === 'http://localhost:3000/questions') {
+  submitForm() {    
+    if(this.apiEndpoint === ApiUrl.questions) {
       this.formData = {
         testQuizId: parseInt(this.formData.testQuizId),
         content: this.formData.content,
@@ -28,7 +27,6 @@ export class AddDataComponent {
         correctOption: parseInt(this.formData.correctOption)
       };
     }
-    console.log(this.formData);
     this.apiservice.post(this.apiEndpoint, this.formData).subscribe({
       next: (response: any) => {
         console.log(response);

@@ -5,6 +5,8 @@
 <button (click)="showComponent('getRoadmaps')">get roadmaps</button>
 <button (click)="showComponent('getMilestones')">get milestones</button>
 <button (click)="showComponent('getQuestions')">get questions</button>
+<button (click)="showComponent('getQuizes')">get quizes</button>
+<button (click)="showComponent('getUsers')">get users</button>
 
 <app-add-data [apiEndpoint]="apiEndpoint" [fields]="fields" *ngIf="isContentActive('addRoadmap')"></app-add-data>
 <app-add-data [apiEndpoint]="apiEndpoint" [fields]="fields" *ngIf="isContentActive('addMilestone')"></app-add-data>
@@ -13,3 +15,5 @@
 <app-get-data [apiEndpoint]="apiEndpoint" *ngIf="isContentActive('getRoadmaps')"></app-get-data>
 <app-get-data [apiEndpoint]="apiEndpoint" *ngIf="isContentActive('getMilestones')"></app-get-data>
 <app-get-data [apiEndpoint]="apiEndpoint" *ngIf="isContentActive('getQuestions')"></app-get-data>
+<app-get-data [apiEndpoint]="apiEndpoint" *ngIf="isContentActive('getQuizes')"></app-get-data>
+<app-get-data [apiEndpoint]="apiEndpoint" *ngIf="isContentActive('getUsers')"></app-get-data>
