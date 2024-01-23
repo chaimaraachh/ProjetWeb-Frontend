@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddToDbComponent } from './add-to-db.component';
+import { AddDataComponent } from './add-data.component';
 
-describe('AddToDbComponent', () => {
-  let component: AddToDbComponent;
-  let fixture: ComponentFixture<AddToDbComponent>;
+describe('AddDataComponent', () => {
+  let component: AddDataComponent;
+  let fixture: ComponentFixture<AddDataComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [AddToDbComponent]
+      declarations: [AddDataComponent]
     });
-    fixture = TestBed.createComponent(AddToDbComponent);
+    fixture = TestBed.createComponent(AddDataComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
