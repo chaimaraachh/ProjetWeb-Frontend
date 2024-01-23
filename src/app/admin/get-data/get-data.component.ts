@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ApiUrl } from 'src/app/config/config';
 import { ApiServiceService } from 'src/app/services/api-service.service';
 
 @Component({
@@ -13,17 +12,21 @@ export class GetDataComponent implements OnInit{
 
   ngOnInit(): void { 
     console.log("get data component");
-    this.getRoadmaps(); 
    }
 
    JsonData = [];
-
-  getRoadmaps() {
-    // get roadmaps
-    this.apiservice.get(ApiUrl.roadmaps).subscribe({
-      next: (response: any) => { 
-        console.log("response");
-        this.JsonData = response;
+   deleteurlString = '';
+  deleteRow(row: any): void {
+    if (row['id'] == undefined)
+    {
+      this.deleteurlString =this.apiEndpoint+'/'+row['questionID'];
+    }
+    else
+    {
+      this.deleteurlString =this.apiEndpoint+'/'+row['id'];
+    }
+    this.apiservice.delete(this.deleteurlString).subscribe({
+      next: (response: any) => {
         console.log(response);
       },
       error: (error: any) => {
@@ -31,8 +34,4 @@ export class GetDataComponent implements OnInit{
       }
     });
   }
-  deleteRow(row: any): void {
-    console.log('Deleting row:', row);
-  }
-
 }

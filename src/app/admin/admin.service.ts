@@ -15,4 +15,7 @@ export class AdminService {
     return this.http.post(url, data);
   }
 
+  delete(url: string): Observable<any> {
+    return this.http.delete(url);
+  }
 }

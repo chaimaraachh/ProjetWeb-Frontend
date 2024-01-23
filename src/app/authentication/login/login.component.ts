@@ -21,6 +21,7 @@ login(email: string, password: string) {
     next: (response) => {
       const token = response.token;
       localStorage.setItem('token', token);
+      this.router.navigate(['/roadmaps']);
     },
     error: (error) => {
       console.log(error);

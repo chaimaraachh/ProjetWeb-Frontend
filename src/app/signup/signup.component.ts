@@ -36,6 +36,7 @@ export class SignupComponent implements OnInit{
       next: (response) => {
         alert('Vous êtes signé');
         console.log(response);
+        this.router.navigate(['/login']);
       },
       error : (error) => {
         alert(error.error.message);

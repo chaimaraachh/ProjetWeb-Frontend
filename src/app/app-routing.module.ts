@@ -29,7 +29,7 @@ const routes: Routes = [
   { path: 'addroadmap', component: AddroadmapComponent },
   {path : 'addmilestone', component: AddmilestoneComponent},
   {path : 'addquestion', component: AddquestionsComponent},
-  {path : 'profile' , component: ProfileComponent}
+  {path : 'profile' , component: ProfileComponent},
 ];
 
 @NgModule({

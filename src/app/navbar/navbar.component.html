@@ -11,21 +11,7 @@
       <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
         <a class="nav-link" [routerLink]="['/scoringdashboard']">Scoring Dashboard</a>
       </li>
-      <!-- The login/sign-in dropdown can remain as is since it doesn't navigate using routerLink -->
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Login/Sign In
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Profile</a>
-          <a class="dropdown-item" href="#">Settings</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Logout</a>
-        </div>
-      </li>
-      <!--
-        the 3 items below are just for testing purposes
-      -->
+
       <li *ngIf="!authentificationService.isAuthenticated()" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
         <a class="nav-link" [routerLink]="['/login']">login</a>
       </li>
@@ -35,7 +21,7 @@
       <li *ngIf="!authentificationService.isAuthenticated()" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
         <a class="nav-link" [routerLink]="['/signup']">signup</a>
       </li>
-      <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+      <li *ngIf="authentificationService.isAuthenticated()" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
         <a class="nav-link" [routerLink]="['/adminpanel']">admin panel</a>
       </li>
       <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
