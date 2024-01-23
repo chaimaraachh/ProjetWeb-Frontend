@@ -1,14 +1,14 @@
-<button (click)="showComponent('roadmap')">add roadmap</button>
-<button (click)="showComponent('milestone')">add milestones</button>
-<button (click)="showComponent('question')">add questions</button>
+<button (click)="showComponent('addRoadmap')">add roadmap</button>
+<button (click)="showComponent('addMilestone')">add milestones</button>
+<button (click)="showComponent('addQuestion')">add questions</button>
 <br>
 <button (click)="showComponent('getRoadmaps')">get roadmaps</button>
 <button (click)="showComponent('getMilestones')">get milestones</button>
 <button (click)="showComponent('getQuestions')">get questions</button>
 
-<app-addroadmap *ngIf="isContentActive('roadmap')"></app-addroadmap>
-<app-addmilestone *ngIf="isContentActive('milestone')"></app-addmilestone>
-<app-addquestions *ngIf="isContentActive('question')"></app-addquestions>
+<app-add-data [apiEndpoint]="apiEndpoint" [fields]="fields" *ngIf="isContentActive('addRoadmap')"></app-add-data>
+<app-add-data [apiEndpoint]="apiEndpoint" [fields]="fields" *ngIf="isContentActive('addMilestone')"></app-add-data>
+<app-add-data [apiEndpoint]="apiEndpoint" [fields]="fields" *ngIf="isContentActive('addQuestion')"></app-add-data>
 
 <app-get-data [apiEndpoint]="apiEndpoint" *ngIf="isContentActive('getRoadmaps')"></app-get-data>
 <app-get-data [apiEndpoint]="apiEndpoint" *ngIf="isContentActive('getMilestones')"></app-get-data>

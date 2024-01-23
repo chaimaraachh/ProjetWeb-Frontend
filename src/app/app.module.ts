@@ -23,15 +23,12 @@ import { SignupComponent } from './signup/signup.component';
 import { ProfileComponent } from './profile/profile.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AdminpanelComponent } from './admin/adminpanel/adminpanel.component';
-import { AddroadmapComponent } from './admin/addroadmap/addroadmap.component';
-import { AddmilestoneComponent } from './admin/addmilestone/addmilestone.component';
-import { AddquestionsComponent } from './admin/addquestions/addquestions.component';
 import { AuthInterceptor } from './authentication/interceptors/auth.interceptor';
 import { GetDataComponent } from './admin/get-data/get-data.component';
 import { JsonTableComponent } from './json-table/json-table.component';
-import { AddToDbComponent } from './admin/add-to-db/add-to-db.component';
 import { UseritemComponent } from './dashboard/useritem/useritem.component';
 import { UserslistComponent } from './dashboard/userslist/userslist.component';
+import { AddDataComponent } from './admin/add-data/add-data.component';
 
 @NgModule({
   declarations: [
@@ -53,14 +50,11 @@ import { UserslistComponent } from './dashboard/userslist/userslist.component';
     SignupComponent,
     ProfileComponent,
     AdminpanelComponent,
-    AddroadmapComponent,
-    AddmilestoneComponent,
-    AddquestionsComponent,
     GetDataComponent,
     JsonTableComponent,
-    AddToDbComponent,
     UseritemComponent,
     UserslistComponent,
+    AddDataComponent,
   ],
   imports: [
     BrowserModule,
