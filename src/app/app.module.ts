@@ -30,6 +30,8 @@ import { AuthInterceptor } from './authentication/interceptors/auth.interceptor'
 import { GetDataComponent } from './admin/get-data/get-data.component';
 import { JsonTableComponent } from './json-table/json-table.component';
 import { AddToDbComponent } from './admin/add-to-db/add-to-db.component';
+import { UseritemComponent } from './dashboard/useritem/useritem.component';
+import { UserslistComponent } from './dashboard/userslist/userslist.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +59,8 @@ import { AddToDbComponent } from './admin/add-to-db/add-to-db.component';
     GetDataComponent,
     JsonTableComponent,
     AddToDbComponent,
+    UseritemComponent,
+    UserslistComponent,
   ],
   imports: [
     BrowserModule,

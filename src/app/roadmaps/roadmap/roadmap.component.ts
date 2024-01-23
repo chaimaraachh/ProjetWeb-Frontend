@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RoadmapserviceService } from '../roadmapservice.service';
-import { Milestone } from '../milestone';
+import { Roadmap} from '.././roadmap.js'; 
+import { Milestone } from '.././milestone.js';
 
 @Component({
   selector: 'app-roadmap',
@@ -10,9 +11,10 @@ import { Milestone } from '../milestone';
 })
 export class RoadmapComponent implements OnInit {
   milestones: Milestone[] = [];
-  roadmapName: string = '';
+  roadmap: Roadmap | null = null;
   selectedMilestone: Milestone | null = null;
   roadmapProgress: number = 25;
+
   constructor(
     private roadmapService: RoadmapserviceService,
     private route: ActivatedRoute,
@@ -20,22 +22,42 @@ export class RoadmapComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
-      const field = params['field'];
-      this.roadmapName = field || 'Default Roadmap';
-      this.roadmapService.setCurrentRoadmapType(field);
-      this.milestones = this.roadmapService.getCurrentMilestones();
+      const roadmapId = params['roadmapId'];
+      if (roadmapId) {
+        this.roadmapService.getRoadmapById(roadmapId).subscribe(
+          roadmap => {
+            this.roadmap = roadmap;
+            console.log('Roadmap:', roadmap);
+            if (roadmap) {
+              this.roadmapService.getMilestonesByRoadmap(roadmapId).subscribe(
+                milestones => {
+                  this.milestones = milestones;
+                  console.log('Milestones:', milestones);
+                },
+                error => console.error('Error fetching milestones:', error)
+              );
+            }
+          },
+          error => console.error('Error fetching roadmap:', error)
+        );
+      } 
     });
   }
+  
+  
+  
 
-  goToMilestone(id: string): void {
-    const milestone = this.roadmapService.getMilestone(id);
-    if (milestone !== null) {
-      this.selectedMilestone = milestone;
-      console.log('Selected Milestone:', milestone);
+  goToMilestone(milestoneId: string): void {
+    if (this.roadmap) {
+      const milestone = this.roadmap.milestones.find(m => m.id === milestoneId);
+      if (milestone) {
+        this.selectedMilestone = milestone;
+        console.log('Selected Milestone:', milestone);
+      }
     }
   }
 
-  handleMilestoneSelected(selectedMilestone: any): void {
+  handleMilestoneSelected(selectedMilestone: Milestone): void {
     console.log('Selected Milestone:', selectedMilestone);
   }
 }
