@@ -46,4 +46,14 @@ export class RoadmapserviceService {
   getMilestonesByRoadmap(roadmapId: string): Observable<Milestone[]> {
     return this.http.get<Milestone[]>(`${ApiUrl.milestones}/byRoadmap/${roadmapId}`);
   }
+
+
+  subscribeToRoadmap(userId: number, roadmapId: string): Observable<any> {
+    const body = {
+      userId: userId,
+      roadmapId: roadmapId
+    };
+
+    return this.http.post(`${ApiUrl.progress}/suivreRoadmap`, body);
+  }
 }

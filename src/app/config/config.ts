@@ -8,4 +8,6 @@ export const ApiUrl = {
     questions: 'http://localhost:3000/questions',
     verifyQuiz: 'http://localhost:3000/questions/verify-quiz',
     user:'http://localhost:3000/users',
+    progress:'http://localhost:3000/progress'
+
 };
