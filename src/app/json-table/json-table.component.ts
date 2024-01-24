@@ -8,7 +8,6 @@ import { ApiServiceService } from '../services/api-service.service';
 })
 export class JsonTableComponent implements OnInit {
   @Input() apiEndpoint: string="";
-  @Output() deleteRow = new EventEmitter<any>();
   jsonData: any[]= [];
   constructor(private apiService: ApiServiceService) {}
 
@@ -35,5 +34,30 @@ export class JsonTableComponent implements OnInit {
     }
     return Object.keys(this.jsonData[0]);
   }
+
+  deleteUrl = '';
+  deleteRow(row: any): void {
+    console.log(row);
+    
+    if (row['id'] == undefined)
+    {
+      this.deleteUrl =this.apiEndpoint+'/'+row['id'];
+    }
+    else
+    {
+      this.deleteUrl =this.apiEndpoint+'/'+row['id'];
+    }
+    console.log(this.deleteUrl);
+    
+    this.apiService.delete(this.deleteUrl).subscribe({
+      next: (response: any) => {
+        console.log(response);
+      },
+      error: (error: any) => {
+        console.error(error);
+      }
+    });
+  }
+
 
 }

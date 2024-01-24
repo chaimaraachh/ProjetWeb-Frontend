@@ -1,11 +1,11 @@
 export class Question {
-  questionID : number;
+  id : number;
   content : string;
   options : string[];
   testQuiz : number;
   correctOption : number;
   constructor() {
-    this.questionID = 0;
+    this.id = 0;
     this.content = '';
     this.options = [];
     this.testQuiz = 0;

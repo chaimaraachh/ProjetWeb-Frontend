@@ -7,7 +7,7 @@
                name="{{field.name}}"
                class="form-control"
                [id]="field.name"
-               required>
+               required={{!!field.required}}>
         <div class="alert alert-danger" *ngIf="!form.controls[field.name]?.valid && form.controls[field.name]?.touched">
           {{field.errorMessage}}
         </div>

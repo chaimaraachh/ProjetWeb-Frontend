@@ -24,7 +24,6 @@ import { ProfileComponent } from './profile/profile.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AdminpanelComponent } from './admin/adminpanel/adminpanel.component';
 import { AuthInterceptor } from './authentication/interceptors/auth.interceptor';
-import { GetDataComponent } from './admin/get-data/get-data.component';
 import { JsonTableComponent } from './json-table/json-table.component';
 import { UseritemComponent } from './dashboard/useritem/useritem.component';
 import { UserslistComponent } from './dashboard/userslist/userslist.component';
@@ -50,7 +49,6 @@ import { AddDataComponent } from './admin/add-data/add-data.component';
     SignupComponent,
     ProfileComponent,
     AdminpanelComponent,
-    GetDataComponent,
     JsonTableComponent,
     UseritemComponent,
     UserslistComponent,

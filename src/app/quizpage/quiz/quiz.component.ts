@@ -13,7 +13,7 @@ import { ApiUrl } from 'src/app/config/config';
 export class QuizComponent implements OnInit {
   id: number ;
   questions: Question[];
-  userAnswers: { [questionID: number]: number } = {};
+  userAnswers: { [id: number]: number } = {};
   quizDuration:number ; // Quiz duration in seconds
   quizStartTime!: Date; // Time when the quiz starts
   remainingTime !:number;  
@@ -36,7 +36,7 @@ export class QuizComponent implements OnInit {
         this.questions = response;
         // Initialize userAnswers with -1 for each question
         this.questions.forEach(question => {
-          this.userAnswers[question.questionID] = -1;
+          this.userAnswers[question.id] = -1;
         });
       },
       error: (error) => {
@@ -67,13 +67,13 @@ export class QuizComponent implements OnInit {
       $event.returnValue = 'Are you sure you want to leave? Your progress may be lost.';
   }
 
-  onAnswer(questionID: number, answerIndex: number) {
-    this.userAnswers[questionID] = answerIndex;
+  onAnswer(id: number, answerIndex: number) {
+    this.userAnswers[id] = answerIndex;
   }
 
   submitQuiz() {
-    const answers = Object.entries(this.userAnswers).map(([questionID, answerIndex]) => ({
-      questionId: parseInt(questionID),
+    const answers = Object.entries(this.userAnswers).map(([id, answerIndex]) => ({
+      id: parseInt(id),
       userAnswer: answerIndex
     }));
 

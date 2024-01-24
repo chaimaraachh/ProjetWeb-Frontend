@@ -12,8 +12,8 @@
 <app-add-data [apiEndpoint]="apiEndpoint" [fields]="fields" *ngIf="isContentActive('addMilestone')"></app-add-data>
 <app-add-data [apiEndpoint]="apiEndpoint" [fields]="fields" *ngIf="isContentActive('addQuestion')"></app-add-data>
 
-<app-get-data [apiEndpoint]="apiEndpoint" *ngIf="isContentActive('getRoadmaps')"></app-get-data>
-<app-get-data [apiEndpoint]="apiEndpoint" *ngIf="isContentActive('getMilestones')"></app-get-data>
-<app-get-data [apiEndpoint]="apiEndpoint" *ngIf="isContentActive('getQuestions')"></app-get-data>
-<app-get-data [apiEndpoint]="apiEndpoint" *ngIf="isContentActive('getQuizes')"></app-get-data>
-<app-get-data [apiEndpoint]="apiEndpoint" *ngIf="isContentActive('getUsers')"></app-get-data>
+<app-json-table [apiEndpoint]="apiEndpoint" *ngIf="isContentActive('getRoadmaps')"></app-json-table>
+<app-json-table [apiEndpoint]="apiEndpoint" *ngIf="isContentActive('getMilestones')"></app-json-table>
+<app-json-table [apiEndpoint]="apiEndpoint" *ngIf="isContentActive('getQuestions')"></app-json-table>
+<app-json-table [apiEndpoint]="apiEndpoint" *ngIf="isContentActive('getQuizes')"></app-json-table>
+<app-json-table [apiEndpoint]="apiEndpoint" *ngIf="isContentActive('getUsers')"></app-json-table>
