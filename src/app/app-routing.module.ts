@@ -11,7 +11,8 @@ import { SignupComponent } from './signup/signup.component';
 import { AdminpanelComponent } from './admin/adminpanel/adminpanel.component';
 import { Auth2Guard } from './guard/login.guard';
 import { ProfileComponent } from './profile/profile.component';
-import { quizGuard } from './guard/quiz.guard';
+import { QuizGuard } from './guard/quiz.guard';
+import { TestresultComponent } from './quizpage/testresult/testresult.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -19,12 +20,13 @@ const routes: Routes = [
   { path: 'roadmaps', component: RoadmaplistComponent },
   { path: 'aboutus', component: AboutusComponent },
   { path: 'scoringdashboard', component: ScoringdashboardComponent  },
-  { path: 'quiz/:id', component: QuizComponent ,canActivate: [quizGuard] },
+  { path: 'quiz/:id', component: QuizComponent ,canActivate: [QuizGuard] , canDeactivate: [QuizGuard]},
   { path: 'roadmap', component: RoadmapComponent },
   { path: 'login', component: LoginComponent , canActivate: [Auth2Guard]},
   { path: 'signup', component: SignupComponent , canActivate: [Auth2Guard]},
   { path: 'adminpanel', component: AdminpanelComponent },
   {path : 'profile' , component: ProfileComponent},
+  {path : 'testresult' , component: TestresultComponent},
 ];
 
 @NgModule({

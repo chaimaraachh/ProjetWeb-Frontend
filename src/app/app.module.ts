@@ -28,6 +28,7 @@ import { JsonTableComponent } from './json-table/json-table.component';
 import { UseritemComponent } from './dashboard/useritem/useritem.component';
 import { UserslistComponent } from './dashboard/userslist/userslist.component';
 import { AddDataComponent } from './admin/add-data/add-data.component';
+import { TestresultComponent } from './quizpage/testresult/testresult.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { AddDataComponent } from './admin/add-data/add-data.component';
     UseritemComponent,
     UserslistComponent,
     AddDataComponent,
+    TestresultComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,9 +1,10 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Question } from '../question/question';
 import { ActivatedRoute, Router } from '@angular/router';
 import { QuizService } from '../quiz.service';
 import { ApiServiceService } from 'src/app/services/api-service.service';
 import { ApiUrl } from 'src/app/config/config';
+import { SharedDataService } from 'src/app/services/shared.data.service';
 
 @Component({
   selector: 'app-quiz',
@@ -17,16 +18,24 @@ export class QuizComponent implements OnInit {
   quizDuration:number ; // Quiz duration in seconds
   quizStartTime!: Date; // Time when the quiz starts
   remainingTime !:number;  
+  private timerInterval: number;
+  private timer: any;
+  private hasQuizBeenSubmitted = false; // New property to track if the quiz has been submitted
+
 
   constructor(
     private acr: ActivatedRoute,
     private quizService: QuizService,
     private router: Router,
-    private apiService: ApiServiceService
+    private apiService: ApiServiceService,
+    private sharedDataService: SharedDataService
     ) {
     this.questions = [];
     this.id = this.acr.snapshot.params['id'];
-    this.quizDuration = 60; // Quiz duration in seconds
+    this.quizDuration = 5; // Quiz duration in seconds
+    this.timerInterval = 1000;
+    this.timer = null;
+
   }
 
   ngOnInit() {
@@ -43,9 +52,10 @@ export class QuizComponent implements OnInit {
         console.error(error);
       }
     });
-    this.startTimer();
+    if (!this.timer) {
+      this.startTimer();
+    }
   }
-
   startTimer() {
     this.quizStartTime = new Date(); // Record the start time
     const timerInterval = 1000;
@@ -61,38 +71,35 @@ export class QuizComponent implements OnInit {
     }, timerInterval);
   }
   
-  // HostListener to detect when the user tries to leave the page
-  @HostListener('window:beforeunload', ['$event'])
-  leavingPageAlert($event: any): void {
-      $event.returnValue = 'Are you sure you want to leave? Your progress may be lost.';
-  }
-
-  onAnswer(id: number, answerIndex: number) {
-    this.userAnswers[id] = answerIndex;
+  submit() {
+    this.router.navigate(['/testresult']);
   }
 
   submitQuiz() {
+    if (this.hasQuizBeenSubmitted) {
+      return; // Prevent multiple submissions
+    }
+    this.hasQuizBeenSubmitted = true;
     const answers = Object.entries(this.userAnswers).map(([id, answerIndex]) => ({
       id: parseInt(id),
       userAnswer: answerIndex
     }));
-
     const payload = {
       answers: answers
     };
-
-    // Send the data to the backend
     this.apiService.post(ApiUrl.verifyQuiz, payload).subscribe({
       next: (response) => {
-        // Handle the response here
         console.log(response);
-        alert("your score is :"+response.score);
+        this.sharedDataService.setQuizScore(response.score); // Set the score in shared service
       },
       error: (error) => {
         console.error(error);
       }
     });
-    this.router.navigate(['/home']);
+  }
+
+  onAnswer(id: number, answerIndex: number) {
+    this.userAnswers[id] = answerIndex;
   }
 
 }
