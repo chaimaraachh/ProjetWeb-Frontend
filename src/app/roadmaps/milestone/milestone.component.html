@@ -8,14 +8,16 @@
   <div *ngIf="showDetails" class="details-section">
     <p><strong>Description:</strong> {{ milestone.description }}</p>
 
-    <div *ngIf="milestone.recommandedCourses.length > 0">
-      <strong>Course Links:</strong>
-      <ul>
-        <li *ngFor="let course of milestone.recommandedCourses">
-          <a [href]="course.link" target="_blank">{{ course.title }}</a>
-        </li>
-      </ul>
-    </div>
+    <ng-container *ngIf="milestone.recommandedCourses">
+      <div *ngIf="milestone.recommandedCourses.length > 0">
+        <strong>Course Links:</strong>
+        <ul>
+          <li *ngFor="let course of milestone.recommandedCourses">
+            <a [href]="course.link" target="_blank">{{ course.title }}</a>
+          </li>
+        </ul>
+      </div>
+    </ng-container>
     <button class="btn btn-primary" (click)="navigateToQuiz()">Take Test</button>
   </div>
 </div>

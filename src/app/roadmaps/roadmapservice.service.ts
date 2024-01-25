@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, catchError, map, of } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Roadmap } from './roadmap.js'; 
 import { ApiUrl } from '../config/config';
 import { Milestone } from './milestone.js';
@@ -47,13 +47,26 @@ export class RoadmapserviceService {
     return this.http.get<Milestone[]>(`${ApiUrl.milestones}/byRoadmap/${roadmapId}`);
   }
 
+  subscribeToRoadmap(roadmapId: string): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
 
-  subscribeToRoadmap(userId: number, roadmapId: string): Observable<any> {
     const body = {
-      userId: userId,
       roadmapId: roadmapId
     };
 
-    return this.http.post(`${ApiUrl.progress}/suivreRoadmap`, body);
+    return this.http.post(`${ApiUrl.progress}/suivreRoadmap`, body, { headers: headers });
   }
+
+  getRoadmapProgress(roadmapId: string): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+  
+    return this.http.get(`${ApiUrl.progress}/getprogress/${roadmapId}`, { headers: headers });
+  }
+  
 }

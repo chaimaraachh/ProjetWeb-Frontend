@@ -15,9 +15,10 @@ export class MilestoneComponent {
   constructor(private router: Router) {}
 
   navigateToQuiz() {
-    if (this.milestone.quiz && this.milestone.quiz.id) {
-      console.log(this.milestone.quiz.id);
-      this.router.navigate(['/quiz/' + this.milestone.quiz.id]);
+    console.log(this.milestone);
+
+    if (this.milestone.quizId) {
+      this.router.navigate(['/quiz/' + this.milestone.quizId]);
     }
   }
 
