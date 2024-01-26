@@ -17,8 +17,8 @@ export class MilestoneComponent {
   navigateToQuiz() {
     console.log(this.milestone);
 
-    if (this.milestone.quizId) {
-      this.router.navigate(['/quiz/' + this.milestone.quizId]);
+    if (this.milestone.quiz.id) {
+      this.router.navigate(['/quiz/' + this.milestone.quiz.id]);
     }
   }
 
