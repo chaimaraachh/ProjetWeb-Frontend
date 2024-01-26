@@ -1,6 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Milestone } from '../milestone';
+import { Title } from '@angular/platform-browser';
+import { ApiServiceService } from 'src/app/services/api-service.service';
+import { ApiUrl } from 'src/app/config/config';
 
 @Component({
   selector: 'app-milestone',
@@ -11,13 +14,19 @@ export class MilestoneComponent {
   @Input()
   milestone!: Milestone; 
   showDetails: boolean = false;
-
-  constructor(private router: Router) {}
+  quizId = '';
+  constructor(
+    private router: Router,
+    private apiservice: ApiServiceService,
+    ) {}
 
   navigateToQuiz() {
-    if (this.milestone.quiz && this.milestone.quiz.id) {
-      console.log(this.milestone.quiz.id);
-      this.router.navigate(['/quiz/' + this.milestone.quiz.id]);
+    this.apiservice.get(ApiUrl.quiz+'/title/'+this.milestone.id).subscribe((data: any) => {
+      this.quizId = data.id;
+    }
+    );
+    if (this.quizId) {
+      this.router.navigate(['/quiz/' + this.quizId]);
     }
   }
 

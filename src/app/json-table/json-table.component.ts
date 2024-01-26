@@ -35,21 +35,22 @@ export class JsonTableComponent implements OnInit {
     return Object.keys(this.jsonData[0]);
   }
 
-  deleteUrl = '';
   deleteRow(row: any): void {
-    console.log(row);
-    
-    if (row['id'] == undefined)
-    {
-      this.deleteUrl =this.apiEndpoint+'/'+row['id'];
-    }
-    else
-    {
-      this.deleteUrl =this.apiEndpoint+'/'+row['id'];
-    }
-    console.log(this.deleteUrl);
-    
-    this.apiService.delete(this.deleteUrl).subscribe({
+    if (!confirm('Are you sure you want to delete this row?')){
+    this.apiService.delete(this.apiEndpoint+'/'+row['id']).subscribe({
+      next: (response: any) => {
+        console.log(response);
+      },
+      error: (error: any) => {
+        console.error(error);
+      }
+    });
+  }
+  return;
+  }
+
+  softDeleteRow(row: any): void {
+    this.apiService.delete(this.apiEndpoint+'/soft/'+row['id']).subscribe({
       next: (response: any) => {
         console.log(response);
       },
