@@ -9,7 +9,7 @@ import { Roadmap } from '../roadmap'; // Assuming you have this interface/class
   styleUrls: ['./roadmaplist.component.css']
 })
 export class RoadmaplistComponent implements OnInit {
-  roadmaps: Roadmap[] = []; // Use Roadmap type instead of any
+  roadmaps: Roadmap[] = []; 
   errorMessage: string = '';
 
   constructor(
@@ -18,8 +18,14 @@ export class RoadmaplistComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.loadRoadmaps();
+    this.roadmapService.getAllRoadmaps().subscribe(
+      data => {
+        this.roadmaps = data;
+      },
+      error => console.error('Error fetching roadmaps:', error)
+    );
   }
+  
 
   private loadRoadmaps() {
     this.roadmapService.getAllRoadmaps().subscribe({

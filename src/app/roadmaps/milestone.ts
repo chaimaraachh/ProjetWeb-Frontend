@@ -10,8 +10,8 @@ export interface Milestone {
   recommandedCourses: any[]; // Same as above
   quiz: {
     id: number;
-    title: string;
-  };
+
+  }
   roadmap: {
     id: string;
     title: string;
@@ -32,10 +32,8 @@ export class MilestoneClass implements Milestone {
   validations: any[]; // Adjust the type as needed
   recommandedCertifications: any[]; // Adjust the type as needed
   recommandedCourses: any[]; // Adjust the type as needed
-  quiz: {
-    id: number;
-    title: string;
-  };
+  quiz: { id: number; };
+
   roadmap: {
     id: string;
     title: string;
@@ -56,7 +54,10 @@ export class MilestoneClass implements Milestone {
     this.validations = [];
     this.recommandedCertifications = [];
     this.recommandedCourses = [];
-    this.quiz = { id: 0, title: '' };
+    this.quiz={
+      id:0,
+
+    }
     this.roadmap = {
       id: '',
       title: '',
