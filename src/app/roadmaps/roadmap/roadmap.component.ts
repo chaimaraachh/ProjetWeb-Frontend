@@ -13,12 +13,14 @@ export class RoadmapComponent implements OnInit {
   milestones: Milestone[] = [];
   roadmap: Roadmap | null = null;
   selectedMilestone: Milestone | null = null;
-  roadmapProgress: number = 25;
+  roadmapProgress: number = 0;
+  isSubscribed: boolean = false;
 
   constructor(
     private roadmapService: RoadmapserviceService,
     private route: ActivatedRoute,
   ) {}
+
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
@@ -36,13 +38,27 @@ export class RoadmapComponent implements OnInit {
                 },
                 error => console.error('Error fetching milestones:', error)
               );
+
+              this.roadmapService.getRoadmapProgress(roadmapId).subscribe(
+                progressData => {
+                  this.roadmapProgress = progressData;
+                  console.error(this.roadmapProgress);
+
+                  this.isSubscribed = true;
+                },
+                error => {
+                  console.error('Error fetching roadmap progress:', error);
+                  this.isSubscribed = false;
+                }
+              );
             }
           },
           error => console.error('Error fetching roadmap:', error)
         );
-      } 
+      }
     });
   }
+
   
   
   
