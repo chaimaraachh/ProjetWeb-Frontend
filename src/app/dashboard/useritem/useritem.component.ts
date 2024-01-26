@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-useritem',
@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./useritem.component.css']
 })
 export class UseritemComponent {
+  @Input() user: any;
 
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-userslist',
@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./userslist.component.css']
 })
 export class UserslistComponent {
+  @Input() users: any[] | undefined;
 
 }
