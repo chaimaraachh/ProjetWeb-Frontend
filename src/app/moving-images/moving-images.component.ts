@@ -11,7 +11,7 @@ export class MovingImagesComponent implements OnInit {
   imageObservable!: Observable<string>;
   listeImages = [
     'DevOps.jpg',
-    'ai.jpg',
+    'Cybersecurity.jpg',
     'MachineLearning.jpg'
   ];
   currentImage!: string;

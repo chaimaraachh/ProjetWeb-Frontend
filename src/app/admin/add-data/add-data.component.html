@@ -1,5 +1,5 @@
-<div>
-    <form #form="ngForm">
+<div class="form-container">
+  <form #form="ngForm">
       <div *ngFor="let field of fields">
         <label for="{{field.name}}">{{field.label}}</label>
         <input [type]="field.type"

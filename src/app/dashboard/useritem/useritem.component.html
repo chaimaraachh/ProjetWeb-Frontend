@@ -1,5 +1,8 @@
 <div class="user-item">
-    <h3>{{ user.username }}</h3>
-    <p>Rank: {{ user.rank }}</p>
-    <p>Total Score: {{ user.totalScore }}</p>
-</div>
+    <div class="user-rank">
+      <i class="gg-trophy"></i> {{ user.rank }}
+    </div>
+    <div class="user-username">{{ user.username }}</div>
+    <div class="user-score">Total Score :  {{ user.totalScore }}</div>
+  </div>
+  

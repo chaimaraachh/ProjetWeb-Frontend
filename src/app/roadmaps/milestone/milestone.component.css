@@ -3,15 +3,15 @@
   border-radius: 8px;
   overflow: hidden;
   transition: box-shadow 0.3s, background-color 0.3s;
-  background-color: #343a40;
-  color: #ccc;
+  background-color: var(--color4); /* Soft Periwinkle Blue */
+  color: var(--color1); /* Deep Twilight Blue text */
   margin-bottom: 20px;
 }
 
 .card:hover,
 .card.custom-dark-list-item:hover {
-  box-shadow: 0 6px 12px rgba(255, 255, 255, 0.15);
-  background-color: #495057;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  background-color: var(--color3); /* Light Lavender for hover */
 }
 
 .card-body {
@@ -21,39 +21,36 @@
   padding: 20px;
 }
 
-.custom-toggle-btn {
-  background-color: #0056b3;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  font-weight: bold;
-  text-transform: uppercase;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s;
+.chevron {
+  color: var(--color1); /* Deep Twilight Blue for icon */
   cursor: pointer;
-  margin-top: 20px;
-}
-
-.custom-toggle-btn:hover {
-  background: #003d82;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  transform: translateY(-2px);
+  /* If you need specific sizes or additional styles for the icon, add them here */
 }
 
 .details-section {
   margin: 20px;
-  background-color: #2d3238; /* Slightly different from the card to look inset */
+  background-color: var(--color4); /* Very Pale Lilac for details section */
   padding: 15px;
-  border-radius: 5px; /* Adjust if needed to match card's border-radius */
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3); /* Adjust for depth */
-  border: 1px solid #414a52; /* Border color to match the shadow for depth */
-  width: calc(100% - 30px); /* Adjust width to be less than the card */
+  border-radius: 5px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--color3); /* Light Lavender border for depth */
+  width: calc(100% - 40px); /* Adjust width to allow for padding */
   margin-left: auto;
   margin-right: auto;
 }
 
-
-.card:hover .details-section {
-  background-color: inherit;
+.card-title {
+  color: var(--color1); /* Deep Twilight Blue text */
 }
+
+.btn-primary {
+  background-color: var(--color1); /* Deep Twilight Blue background */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+
+

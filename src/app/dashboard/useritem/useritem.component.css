@@ -1,0 +1,44 @@
+.user-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color1); /* Very Pale Lilac */
+    color: var(--color4); /* Deep Twilight Blue */
+    border: 1px solid var(--color1); /* Soft Periwinkle Blue */
+    border-radius: 12px; /* Increased border radius */
+    padding: 1rem;
+    margin: 1rem auto; /* Centered with vertical margin */
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease-in-out;
+    max-width: 600px; /* Decreased maximum width */
+  }
+  
+  .user-item:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .user-rank, .user-username, .user-score {
+    flex: 1;
+  }
+  
+  .user-rank {
+    display: flex;
+    align-items: center; /* Align the icon and text vertically */
+    justify-content: flex-start; /* Align content to the start */
+  }
+  
+  .user-username {
+    text-align: center;
+    font-size: 1.4rem; /* Increased font size for username */
+  }
+  
+  .user-score {
+    text-align: right;
+  }
+  
+  .gg-trophy {
+    color:  #FFA447;
+    margin-right: 0.7rem; /* Space between the icon and the text */
+    vertical-align: middle; /* Align icon with the text */
+  }
+  

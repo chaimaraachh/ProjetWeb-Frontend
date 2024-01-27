@@ -1,3 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.css";
 @import url("https://css.gg/css");
+
+
+
+:root {
+    --color1: #424874; /* Deep Twilight Blue */
+    --color2: #A6B1E1; /* Soft Periwinkle Blue */
+    --color3: #DCD6F7; /* Light Lavender */
+    --color4: #F4EEFF; /* Very Pale Lilac */
+  }
+  

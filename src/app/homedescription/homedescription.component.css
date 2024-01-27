@@ -2,55 +2,73 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px;
-  background-color: #343a40;
-  color: #fff; /* Light text color for contrast */
+  padding: 2rem; /* Consistent spacing */
+  background-color: var(--color4); /* Very Pale Lilac background */
+  color: var(--color1); /* Deep Twilight Blue text for readability */
+  border-radius: 0.5rem; /* Soften the edges */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
 }
 
 .left-container {
   flex: 1;
-  padding-right: 20px;
+  padding-right: 2rem; /* Consistent spacing */
 }
 
 .right-container {
   flex: 1;
-  /* Add responsive styling for the image or moving component here */
+  display: flex;
+  justify-content: center; /* Center custom images or components */
+  align-items: center;
 }
 
 h2 {
-  font-size: 24px;
-  color: inherit; /* Ensure this is a light color for readability */
+  font-size: 2rem; /* Larger, more dominant heading */
+  margin-bottom: 1rem; /* Spacing below heading */
+  color: inherit;
 }
 
 p {
-  font-size: 16px;
-  line-height: 1.5;
-  margin-top: 10px; /* Add spacing between paragraphs */
-  color: inherit; /* Ensure this is a light color for readability */
+  font-size: 1rem; /* Standard paragraph size */
+  line-height: 1.6; /* Improved line height for readability */
+  margin-top: 0.5rem; /* Consistent paragraph spacing */
+  color: inherit;
 }
 
 .cta-button {
-  background-color: #007bff;
+  background-color: var(--color1); /* Deep Twilight Blue */
   color: #fff;
-  padding: 10px 20px;
+  padding: 0.625rem 1.25rem; /* 10px 20px */
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: 0.25rem; /* Rounded corners for button */
   font-weight: bold;
   transition: background-color 0.3s ease; /* Smooth transition for hover effect */
 }
 
 .cta-button:hover {
-  background-color: #0056b3; /* Darker shade on hover for the button */
+  background-color: #365a86; /* Slightly darker shade of Deep Twilight Blue on hover */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow on hover for depth */
 }
 
 @media (max-width: 768px) {
   .description-container {
     flex-direction: column;
+    text-align: center; /* Center text on small screens */
   }
   
   .left-container,
   .right-container {
     padding-right: 0;
+    padding-bottom: 1rem; /* Space at the bottom for stacked layout */
     flex: none;
+    width: 100%; /* Full width on small screens */
   }
+}
+
+.custom-image {
+    width: 100%; /* Responsive width */
+    max-width: 500px; /* Max width to maintain aspect ratio */
+    height: auto; /* Auto height to maintain aspect ratio */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Consistent shadow depth with container */
+    border-radius: 0.5rem; /* Soften the edges */
+    object-fit: cover; /* Ensure the image covers the area without distortion */
 }
