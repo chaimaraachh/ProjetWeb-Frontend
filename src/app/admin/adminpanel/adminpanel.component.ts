@@ -15,7 +15,9 @@ export class AdminpanelComponent implements OnInit {
   constructor() {}
   
   ngOnInit(): void {}
+  activeComponent: string = '';
 
+  
   showComponent(component: string) {
     if (component === 'getRoadmaps' || component === 'addRoadmap') {
       this.apiEndpoint = ApiUrl.roadmaps;
@@ -38,9 +40,13 @@ export class AdminpanelComponent implements OnInit {
       this.fields = [];
     }
     this.activeContent = component;
+    this.activeComponent = component;
+
   }
 
   isContentActive(content: string): boolean {
     return this.activeContent === content;
   }
+
+  
 }

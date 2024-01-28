@@ -1,31 +1,61 @@
-* {
-    background-color: white;
-}
-
-
 table {
   width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
+  border-collapse: separate; /* Allows border-radius on tables */
+  margin-top: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  border-radius: 12px; /* Rounded corners for the table */
+  overflow: hidden; /* Ensures the content doesn't spill out of border-radius */
 }
+
 th, td {
-  border: 1px solid #ddd;
-  padding: 8px;
+  border: 1px solid #ddd; /* Light grey border */
+  padding: 12px 15px;
   text-align: left;
 }
+
 th {
-  background-color: #f2f2f2;
+  background-color: var(--color1); /* Deep Twilight Blue */
+  color: white;
+  font-size: 16px;
 }
-/*
+
+tbody tr:nth-child(odd) {
+  background-color: #f8f8f8;
+}
+
+tbody tr:hover {
+  background-color: #eef2f7;
+}
+
 button {
-  background-color: #f44336;
+  background-color: #80cbc4; /* Lighter green shade */
   color: white;
   border: none;
-  padding: 5px 10px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 12px;
+  padding: 8px 16px;
+  border-radius: 4px; /* Rounded corners for buttons */
   cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  margin-right: 8px;
 }
-*/
+
+button:hover {
+  background-color: #4db6ac; /* Slightly darker on hover */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.soft-delete-button {
+  background-color: #ffb74d; /* Lighter orange */
+}
+
+.soft-delete-button:hover {
+  background-color: #ffa726;
+}
+
+.delete-button {
+  background-color: #e57373; /* Lighter red */
+}
+
+.delete-button:hover {
+  background-color: #ef5350;
+}

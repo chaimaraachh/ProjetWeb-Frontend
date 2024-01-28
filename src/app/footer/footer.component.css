@@ -1,21 +1,32 @@
 .footer {
-  background-color: #343a40;
-  color: #bbb; /* Lighter text color for better contrast */
+  flex-shrink: 0; /* Do not shrink */
+  background-color: var(--color4); /* Very Pale Lilac */
+  color: var(--color1); /* Deep Twilight Blue */
   box-shadow: 0 -4px 8px 0 rgba(0,0,0,0.2);
 }
+:host {
+  flex-shrink: 0;
+}
+
 
 .footer-link {
-  color: #bbb; /* Lighter text color for better contrast */
+  color: var(--color1); /* Deep Twilight Blue for links */
   transition: color 0.3s ease;
 }
 
 .footer-link:hover {
-  color: #fff;
+  color: var(--color2); /* Soft Periwinkle Blue on hover */
   text-decoration: none; /* Optional: remove underline on hover */
 }
 
 @media (max-width: 768px) {
   .footer .row > div {
-    margin-bottom: 15px; /* Add space between stacked elements on small screens */
+    margin-bottom: 15px; /* Space between elements on smaller screens */
   }
+}
+.footer .row > div {
+  margin-bottom: 0; /* If there's no need for bottom margin */
+}
+.footer {
+  flex-shrink: 0;
 }

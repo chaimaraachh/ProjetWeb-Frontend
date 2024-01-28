@@ -1,6 +1,8 @@
-*
 .custom-image {
-    width: 800px;
-    height: 400px;
-    box-shadow: 0 0 10px rgba(23, 23, 23, 0.1); 
-  }
+  width: 100%; /* Responsive width */
+  max-width: 500px; /* Max width to maintain aspect ratio */
+  height: auto; /* Auto height to maintain aspect ratio */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Consistent shadow depth with container */
+  border-radius: 0.5rem; /* Soften the edges */
+  object-fit: cover; /* Ensure the image covers the area without distortion */
+}

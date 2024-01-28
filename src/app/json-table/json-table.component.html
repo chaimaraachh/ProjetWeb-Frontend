@@ -9,8 +9,9 @@
     <tr *ngFor="let row of jsonData">
       <td *ngFor="let key of getColumnHeaders()">{{ row[key] }}</td>
       <td>
-        <button (click)="softDeleteRow(row)">softDelete</button>
-        <button (click)="this.deleteRow(row)">Delete</button>
+        <button class="soft-delete-button" (click)="softDeleteRow(row)">softDelete</button>
+        <button class="delete-button" (click)="this.deleteRow(row)">Delete</button>
+        
       </td>
     </tr>
   </tbody>

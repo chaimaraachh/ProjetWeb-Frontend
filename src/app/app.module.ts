@@ -14,7 +14,6 @@ import { QuestionComponent } from './quizpage/question/question.component';
 import { SearchComponent } from './search/search.component';
 import { HomedescriptionComponent } from './homedescription/homedescription.component';
 import { MovingImagesComponent } from './moving-images/moving-images.component';
-import { ScoringdashboardComponent } from './scoringdashboard/scoringdashboard.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { RoadmapitemComponent } from './roadmaps/roadmapitem/roadmapitem.component';
 import { LoginComponent } from './authentication/login/login.component';
@@ -29,6 +28,7 @@ import { UseritemComponent } from './dashboard/useritem/useritem.component';
 import { UserslistComponent } from './dashboard/userslist/userslist.component';
 import { AddDataComponent } from './admin/add-data/add-data.component';
 import { TestresultComponent } from './quizpage/testresult/testresult.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +43,6 @@ import { TestresultComponent } from './quizpage/testresult/testresult.component'
     SearchComponent,
     HomedescriptionComponent,
     MovingImagesComponent,
-    ScoringdashboardComponent,
     AboutusComponent,
     RoadmapitemComponent,
     LoginComponent,
@@ -55,6 +54,7 @@ import { TestresultComponent } from './quizpage/testresult/testresult.component'
     UserslistComponent,
     AddDataComponent,
     TestresultComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,37 @@
 .navbar {
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); 
-  }
-  
+  background-color: var(--color1); /* Deep Twilight Blue */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  color: var(--color3); /* Light Lavender text */
+}
+
+.navbar-brand {
+  color: var(--color3); /* Light Lavender text */
+}
+
+.navbar-nav .nav-link {
+  color: var(--color3); /* Light Lavender text */
+  transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover, .navbar-nav .nav-link:focus {
+  color: #fff; /* White color on hover/focus for better visibility */
+}
+
+.navbar-toggler {
+  border-color: var(--color3); /* Light Lavender border */
+}
+
+
+
+.nav-item.active .nav-link, .nav-link.active {
+  color: #fff; /* White color for active link */
+}
+
+.navbar-collapse {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.navbar-nav {
+  flex-direction: row;
+}
