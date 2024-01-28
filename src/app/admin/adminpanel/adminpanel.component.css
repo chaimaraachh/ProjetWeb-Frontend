@@ -36,7 +36,11 @@
 .content-area {
   flex-grow: 1;
   padding: 20px;
+  max-width: calc(100vw - 200px); /* 100% viewport width minus the sidebar width */
+  overflow-x: auto; /* Allows horizontal scrolling if content exceeds the element's bounds */
 }
+
+
 
 .content-area .content-title {
   font-size: 1.5rem;

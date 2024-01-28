@@ -1,0 +1,32 @@
+.profile-container {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .label, .form-control {
+    width: 100%;
+    display: block;
+  }
+  
+  .btn-primary {
+    background-color: var(--color1); /* Use your color variable */
+    /* Other button styles */
+  }
+  .profile-pic {
+    width: 150px; /* Adjust size as needed */
+    height: 150px; /* Adjust size as needed */
+    border-radius: 50%; /* Makes the div a circle */
+    background-color: var(--color2); /* Your choice of background color */
+    color: white; /* Text color */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  

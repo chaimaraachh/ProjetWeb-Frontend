@@ -64,11 +64,4 @@ p {
   }
 }
 
-.custom-image {
-    width: 100%; /* Responsive width */
-    max-width: 500px; /* Max width to maintain aspect ratio */
-    height: auto; /* Auto height to maintain aspect ratio */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Consistent shadow depth with container */
-    border-radius: 0.5rem; /* Soften the edges */
-    object-fit: cover; /* Ensure the image covers the area without distortion */
-}
+

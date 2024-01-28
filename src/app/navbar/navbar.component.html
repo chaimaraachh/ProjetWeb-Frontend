@@ -25,7 +25,7 @@
         <a class="nav-link" [routerLink]="['/adminpanel']">Admin Panel</a>
       </li>
       <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-        <a *ngIf="authentificationService.isAuthenticated()"   class="nav-link" [routerLink]="['/profile']">profile</a>
+        <a *ngIf="authentificationService.isAuthenticated()"   class="nav-link" [routerLink]="['/profile']">Profile</a>
       </li>
     </ul>
   </div>
