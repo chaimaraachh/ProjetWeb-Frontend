@@ -9,26 +9,9 @@ import { Question } from './question/question';
 })
 export class QuizService {
 
+  constructor(private http: HttpClient) 
+    {}
 
-
-  constructor(
-    private http: HttpClient) {}
-/*
-  getQuestions(): Observable<any> {
-    return this.http.get(ApiUrlQuestions);
-  }
-
-  getQuestions(): Observable<any> {
-    return this.http.get(ApiUrlQuestions).pipe(
-      map(response => {
-        if (typeof response === 'string') {
-          return JSON.parse(response);
-        }
-        return response;
-      })
-    );
-  }
-  */
   getQuestions(quizId : number): Observable<Question[]> {
     return this.http.get<Question[]>(ApiUrl.questions+"/by-quiz/"+quizId).pipe(
       map((questions: Question[]) => {
@@ -43,5 +26,15 @@ export class QuizService {
   }
   
   
+  submitQuiz(userAnswers: { [id: number]: number }): Observable<any> {
+    const answers = Object.entries(userAnswers).map(([id, answerIndex]) => ({
+      id: parseInt(id, 10),
+      userAnswer: answerIndex
+    }));
+    const payload = {
+      answers: answers
+    };
+    return this.http.post(ApiUrl.verifyQuiz, payload);
+  }
 
 }

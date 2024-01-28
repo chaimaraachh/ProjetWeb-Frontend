@@ -4,6 +4,6 @@
         <div *ngFor="let question of questions">
             <app-question [question]="question" (answer)="onAnswer(question.id, $event)"></app-question>
         </div>
-        <button [disabled]="quiz.invalid" class="btn btn-primary" (click)="submit()">Submit</button>
+        <button [disabled]="quiz.invalid" class="btn btn-primary" (click)="submitQuiz()">Submit</button>
     </form>
 </div>

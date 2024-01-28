@@ -30,19 +30,13 @@ export class QuizGuard implements CanActivate, CanDeactivate<QuizComponent> {
         currentState: RouterStateSnapshot,
         nextState?: RouterStateSnapshot
       ): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-        //if there is no remaining time, allow navigation
-        if (component.remainingTime <= 0) {
-                alert('time is up! Your quiz will be submitted.')
-                return true;
+        if (component.hasQuizBeenSubmitted){
+          return true;
         }
-        else //if there is remaining time, ask the user if they want to leave
-        {
-                if (confirm('Are you sure you want to leave this page? Your quiz will be submitted.')) {
-                        component.submitQuiz(); // Submit the quiz
-                        return true;
-                      }
-                return false; // Prevent navigation if they choose not to leave
+        if (confirm('Are you sure you want to leave this page? Your quiz will not be submitted.')) {
+            return true;
         }
+        return false;
       }
 }
 
