@@ -32,7 +32,7 @@ export class QuizComponent implements OnInit {
     ) {
     this.questions = [];
     this.id = this.acr.snapshot.params['id'];
-    this.quizDuration = 5; // Quiz duration in seconds
+    this.quizDuration = 50; // Quiz duration in seconds
     this.timerInterval = 1000;
     this.timer = null;
 

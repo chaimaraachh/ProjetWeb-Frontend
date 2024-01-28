@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ApiUrl } from 'src/app/config/config';
 import { ApiServiceService } from 'src/app/services/api-service.service';
 
@@ -7,15 +7,22 @@ import { ApiServiceService } from 'src/app/services/api-service.service';
   templateUrl: './add-data.component.html',
   styleUrls: ['./add-data.component.css']
 })
-export class AddDataComponent {
+export class AddDataComponent implements OnInit {
   @Input() fields: any[]=[];
   @Output() onSubmit = new EventEmitter<any>();
   @Input() apiEndpoint: string="";
   constructor(
-    private apiservice : ApiServiceService
+    private apiservice : ApiServiceService,
   ) { }
   formData: any = {};
   
+  ngOnInit(): void {
+    if (this.apiEndpoint === ApiUrl.milestones) {
+      this.loadDropdownOptions(ApiUrl.roadmaps);
+    } else if (this.apiEndpoint === ApiUrl.questions) {
+      this.loadDropdownOptions(ApiUrl.milestones);
+    }
+  }
   submitForm() {    
     if(this.apiEndpoint === ApiUrl.questions) {
       this.formData = {
@@ -37,4 +44,18 @@ export class AddDataComponent {
     });
   }
 
+  loadDropdownOptions(url: string) {
+    const dropdownField = this.fields.find(f => f.type === 'dropdown');
+    this.apiservice.get(url).subscribe({
+      next: (response: any) => {
+        console.log(response);
+        dropdownField.options = response.map((r: any) => {
+          return { value: r.id, text: r.id };
+        });
+      },
+      error: (error: any) => {
+        console.error(error);
+      }
+    });
+  }
 }
