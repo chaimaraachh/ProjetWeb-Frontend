@@ -36,9 +36,26 @@
     </div>
 
     <div *ngIf="currentView === 'achievements'">
-      <!-- Achievements Content -->
-      <!-- ... -->
+      <div class="achievements-header">
+        <h1>Achievements</h1>
+        <p class="motivational-quote">"Every step in learning is a step closer to realizing your limitless potential."</p>
+      </div>
+    
+      <div class="roadmap-header" *ngFor="let roadmapData of roadmapsProgress">
+        <h2>{{ roadmapData.roadmap.title }}</h2>
+        <div class="progress-container">
+          <div *ngIf="roadmapData.isSubscribed" class="progress">
+            <div class="progress-bar progress-bar-info" role="progressbar" 
+                 [attr.aria-valuenow]="roadmapData.progress" aria-valuemin="0" aria-valuemax="100" 
+                 [style.width]="roadmapData.progress + '%'">
+              {{ roadmapData.progress }}% Complete
+            </div>
+          </div>
+        </div>
+      </div>
+      
     </div>
+    
   </div>
 </div>
 

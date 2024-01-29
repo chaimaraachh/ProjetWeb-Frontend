@@ -1,6 +1,14 @@
 import { Component } from '@angular/core';
 import { ProfileService } from './profileservice.service';
 import { AuthentificationService } from '../authentication/services/authentification.service';
+import { RoadmapserviceService } from '../roadmaps/roadmapservice.service';
+import { Roadmap } from '../roadmaps/roadmap';
+interface RoadmapProgress {
+  roadmap: Roadmap;
+  progress: number;
+  isSubscribed: boolean;
+}
+
 
 @Component({
   selector: 'app-profile',
@@ -10,15 +18,39 @@ import { AuthentificationService } from '../authentication/services/authentifica
 export class ProfileComponent {
   user: any = {};
   confirmPassword: any;
+  achievements: any;
+  roadmapsProgress: RoadmapProgress[] = [];
+  currentView = 'achievements';
 
-  constructor(private profileService: ProfileService,public authentificationService: AuthentificationService
-    ) {}
+  
+  constructor(private profileService: ProfileService,public authentificationService: AuthentificationService, private roadmapService: RoadmapserviceService) {}
 
   ngOnInit() {
     this.loadUserProfile();
+    this.loadRoadmapsWithProgress();
+
   }
 
-  currentView = 'editProfile';
+
+
+  loadRoadmapsWithProgress(): void {
+    this.roadmapService.roadmaps$.subscribe(roadmaps => {
+      if (roadmaps) {
+        roadmaps.forEach(roadmap => {
+          this.roadmapService.getRoadmapProgress(roadmap.id).subscribe(
+            progressData => {
+              const isSubscribed = progressData != null;
+              const progress = progressData;
+              this.roadmapsProgress.push({ roadmap, progress, isSubscribed });
+            },
+            error => console.error('Error fetching roadmap progress:', error)
+          );
+        });
+      }
+    });
+  }
+
+
 
 
   navigateTo(view: string) {
