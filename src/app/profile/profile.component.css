@@ -12,11 +12,23 @@
     width: 100%;
     display: block;
   }
-  
+
   .btn-primary {
     background-color: var(--color1); /* Use your color variable */
     /* Other button styles */
   }
+
+  .sidebar-menu .btn-logout.btn-logout {
+    background-color: #ff6961    ;
+    color: white;
+}
+
+.sidebar-menu .btn-logout.btn-logout:hover {
+    background-color: #C85250;
+}
+
+
+
   .profile-pic {
     width: 150px; /* Adjust size as needed */
     height: 150px; /* Adjust size as needed */
@@ -30,3 +42,52 @@
     margin-bottom: 20px;
   }
   
+
+  .admin-panel {
+    display: flex;
+  }
+  
+  .sidebar-menu {
+    flex-basis: 200px;
+    flex-shrink: 0;
+    padding: 20px;
+    background-color: var(--color2);
+    color: white;
+    height: 100%;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .sidebar-menu button.active {
+    background-color: var(--color1);
+    color: white;
+  }
+  
+  .sidebar-menu button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: var(--color4);
+    color: var(--color1);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .sidebar-menu button:hover {
+    background-color: var(--color3);
+  }
+  
+  .content-area {
+    flex-grow: 1;
+    padding: 20px;
+    max-width: calc(100vw - 200px);
+    overflow-x: auto;
+  }
+  
+  .content-area .content-title {
+    font-size: 1.5rem;
+    color: var(--color1);
+    margin-bottom: 20px;
+    text-align: center;
+  }
