@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, catchError, map, of } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, map, of, switchMap } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Roadmap } from './roadmap.js'; 
 import { ApiUrl } from '../config/config';
@@ -52,13 +52,26 @@ export class RoadmapserviceService {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
-
-    const body = {
-      roadmapId: roadmapId
-    };
-
-    return this.http.post(`${ApiUrl.progress}/suivreRoadmap`, body, { headers: headers });
+  
+    return this.getRoadmapProgress(roadmapId).pipe(
+      catchError(error => {
+        console.error('Error fetching roadmap progress:', error);
+        return of(null);
+      }),
+      switchMap(progress => {
+        if (progress) {
+          console.log('User already subscribed to this roadmap.');
+          return of(progress); // Or handle as needed
+        } else {
+          const body = {
+            roadmapId: roadmapId
+          };
+          return this.http.post(`${ApiUrl.progress}/suivreRoadmap`, body, { headers: headers });
+        }
+      })
+    );
   }
+  
 
   getRoadmapProgress(roadmapId: string): Observable<any> {
     const token = localStorage.getItem('token');
