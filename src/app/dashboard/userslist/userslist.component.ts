@@ -7,5 +7,10 @@ import { Component, Input } from '@angular/core';
 })
 export class UserslistComponent {
   @Input() users: any[] | undefined;
+  @Input() currentUser: any;
+
+  ngOnInit() {
+    console.log(this.currentUser, "from list");
+  }
 
 }

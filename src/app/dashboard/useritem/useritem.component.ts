@@ -7,5 +7,9 @@ import { Component, Input } from '@angular/core';
 })
 export class UseritemComponent {
   @Input() user: any;
+  @Input() currentUser: any;
+  ngOnInit() {
+    console.log(this.currentUser, "from item");
+  }
 
 }

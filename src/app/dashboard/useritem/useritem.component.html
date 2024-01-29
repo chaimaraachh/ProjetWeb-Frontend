@@ -1,8 +1,7 @@
-<div class="user-item">
-    <div class="user-rank">
-      <i class="gg-trophy"></i> {{ user.rank }}
-    </div>
-    <div class="user-username">{{ user.username }}</div>
-    <div class="user-score">Total Score :  {{ user.totalScore }}</div>
+<div class="user-item" [ngClass]="{ 'current-user': user.id === currentUser.id }">
+  <div class="user-rank">
+    <i class="gg-trophy"></i> {{ user.rank }}
   </div>
-  
+  <div class="user-username">{{ user.username }}</div>
+  <div class="user-score">Total Score: {{ user.totalScore }}</div>
+</div>

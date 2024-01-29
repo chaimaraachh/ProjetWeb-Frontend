@@ -10,6 +10,27 @@ export class DahsboardserviceService {
   constructor(private http: HttpClient) {}
 
 
+  getUserProfile(): Observable<any> {
+    return this.http.get(`${ApiUrl.user}/getuser`, { headers: this.createAuthorizationHeader() }).pipe(
+      catchError(this.handleError<any>('getUserProfile'))
+    );
+  }
+
+
+  private handleError<T>(operation = 'operation', result?: T): (error: any) => Observable<T> {
+    return (error: any): Observable<T> => {
+      console.error(`${operation} failed: ${error.message}`);
+      return new Observable<T>((observer) => {
+        observer.error(error); // Emit the error
+        observer.complete(); // Complete the observable
+      });
+    };
+  }
+
+  private createAuthorizationHeader(): HttpHeaders {
+    const token = localStorage.getItem('token') || '';
+    return new HttpHeaders({ 'Authorization': `Bearer ${token}` });
+  }
   getUsersWithTotalScores(): Observable<any[]> {
     return this.getUsers().pipe(
       map(users => users.map(user => this.getTotalScore(user.id).pipe(
