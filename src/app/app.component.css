@@ -1,24 +1,27 @@
-html {
-  height: auto; /* Set to auto to allow the body to be the main flex container */
-}
-
-body {
+html, body {
+  height: 100%;
   margin: 0;
   padding: 0;
   display: flex;
-  flex-direction: column; 
-  min-height: 100vh; /* Ensure the body takes at least the full height of the viewport */
-  background-color: var(--color4); /* Very Pale Lilac background */
+  flex-direction: column;
+}
+
+body {
+  min-height: 100vh; /* Full height of the viewport */
+  background-color: var(--color4); /* Very Pale Lilac */
+  display: flex;
+  flex-direction: column;
 }
 
 app-navbar {
-  flex-shrink: 0; /* Navbar should not shrink */
+  flex-shrink: 0;
 }
 
 app-homedescription {
-  flex-grow: 1; /* This will make the main content grow to push the footer down */
+  flex-grow: 1; /* Allows it to expand */
 }
 
 app-footer {
-  flex-shrink: 0; /* Footer should not shrink */
+  margin-top: auto; /* Pushes the footer to the bottom */
+  flex-shrink: 0; /* Prevents the footer from shrinking */
 }
