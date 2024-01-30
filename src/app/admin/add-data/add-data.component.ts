@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { filter } from 'rxjs';
 import { ApiUrl } from 'src/app/config/config';
 import { ApiServiceService } from 'src/app/services/api-service.service';
 
@@ -23,7 +24,18 @@ export class AddDataComponent implements OnInit {
       this.loadDropdownOptions(ApiUrl.milestones);
     }
   }
-  submitForm() {    
+  handleNumberConversion() {
+    for (const field of this.fields) {
+      if (field.type === 'number' && this.formData.hasOwnProperty(field.name)) {
+        this.formData[field.name] = Number(this.formData[field.name]);
+      }
+    }  
+  }
+
+submitForm() {   
+    this.handleNumberConversion();
+    console.log(this.formData);
+    
     if(this.apiEndpoint === ApiUrl.questions) {
       this.formData = {
         testQuizId: parseInt(this.formData.testQuizId),
@@ -34,6 +46,7 @@ export class AddDataComponent implements OnInit {
         correctOption: parseInt(this.formData.correctOption)
       };
     }
+        
     this.apiservice.post(this.apiEndpoint, this.formData).subscribe({
       next: (response: any) => {
         console.log(response);

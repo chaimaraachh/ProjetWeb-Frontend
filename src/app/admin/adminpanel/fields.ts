@@ -6,13 +6,12 @@ export const fields = {
         { name: 'domain', label : 'Domain', type : 'text'},
       ],
     milestone: [
-        { name: 'id', label: 'ID', type: 'text', errorMessage: 'ID is required',required: true },
-        { name: 'xxroadmapId', label: 'xxRoadmap ID', type: 'text', errorMessage: 'Roadmap ID is required', required: true },
-        { name: 'title', label: 'Quiz ID', type: 'text', errorMessage: 'Quiz ID is required', required: true },
+        { name: 'id', label: 'title', type: 'text', errorMessage: 'ID is required',required: true },
+        { name: 'title', label: 'Quiz Title', type: 'text', errorMessage: 'Quiz ID is required', required: true },
         { name: 'orderNumber', label: 'Order Number', type: 'number', errorMessage: 'Order Number is required', required: true },
         { name: 'description', label: 'Description', type: 'text', errorMessage: 'Description is required', required: true },
         {
-          name: 'roadmap',
+          name: 'roadmapId',
           label: 'Roadmap ID',
           type: 'dropdown',
           options: [],
@@ -36,6 +35,14 @@ export const fields = {
           errorMessage: 'testQuizId is required',
           required: true
         },
-
-    ]
+    ],
+    admin: [
+      { name: 'username', label: 'username', type: 'text', errorMessage: 'id is required' , required: true},
+      { name: 'firstname', label: 'firstname', type: 'text', errorMessage: 'id is required' , required: true},
+      { name: 'lastname', label: 'lastname', type: 'text', errorMessage: 'id is required' , required: true},
+      { name: 'email', label: 'Email', type: 'text', errorMessage: 'Email is required', required: true },
+      { name: 'password', label: 'Password', type: 'password', errorMessage: 'Password is required', required: true },
+      { name: 'confirm password', label: 'Password', type: 'password', errorMessage: 'Password is required', required: true },
+      { name: 'role', label: 'Role', type: 'text', errorMessage: 'Role is required', required: true },
+      ],
 }

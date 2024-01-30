@@ -8,7 +8,7 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AuthentificationService } from '../services/authentification.service';
-
+/*
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
@@ -32,7 +32,7 @@ export class AuthInterceptor implements HttpInterceptor {
     return next.handle(request);
   }
 }
-/*
+*/
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
@@ -57,4 +57,3 @@ export class AuthInterceptor implements HttpInterceptor {
     return next.handle(request);
   }
 }
-*/

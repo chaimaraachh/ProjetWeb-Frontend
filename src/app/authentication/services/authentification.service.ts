@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ApiUrl } from '../../config/config';
+import { jwtDecode } from "jwt-decode";
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,16 @@ export class AuthentificationService {
     localStorage.removeItem('token');
   }
 
+  isAdmin(): boolean {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const decodedToken: any = jwtDecode(token);
+      if (decodedToken && decodedToken.role && decodedToken.role === 'admin') {
+        return true;
+      }
+    }
+    return false; 
+  }
 
 }
 
