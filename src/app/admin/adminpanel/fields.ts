@@ -36,11 +36,9 @@ export const fields = {
     ],
     admin: [
       { name: 'username', label: 'username', type: 'text', errorMessage: 'id is required' , required: true},
-      { name: 'firstname', label: 'firstname', type: 'text', errorMessage: 'id is required' , required: true},
-      { name: 'lastname', label: 'lastname', type: 'text', errorMessage: 'id is required' , required: true},
-      { name: 'email', label: 'Email', type: 'text', errorMessage: 'Email is required', required: true },
+      { name: 'email', label: 'Email', type: 'email', errorMessage: 'Email is required', required: true },
       { name: 'password', label: 'Password', type: 'password', errorMessage: 'Password is required', required: true },
-      { name: 'confirm password', label: 'Password', type: 'password', errorMessage: 'Password is required', required: true },
+      //{ name: 'confirm password', label: 'Password', type: 'password', errorMessage: 'Password is required', required: true },
       { name: 'role', label: 'Role', type: 'text', errorMessage: 'Role is required', required: true },
       ],
 }

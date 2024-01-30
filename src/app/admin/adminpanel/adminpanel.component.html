@@ -3,6 +3,7 @@
       <button [class.active]="activeComponent === 'addRoadmap'" (click)="showComponent('addRoadmap')">add roadmap</button>
       <button [class.active]="activeComponent === 'addMilestone'" (click)="showComponent('addMilestone')">add milestones</button>
       <button [class.active]="activeComponent === 'addQuestion'" (click)="showComponent('addQuestion')">add questions</button>
+      <button [class.active]="activeComponent === 'addAdmin'" (click)="showComponent('addAdmin')">add admin</button>
       <hr>
       <button [class.active]="activeComponent === 'getRoadmaps'" (click)="showComponent('getRoadmaps')">get roadmaps</button>
       <button [class.active]="activeComponent === 'getMilestones'" (click)="showComponent('getMilestones')">get milestones</button>
@@ -15,6 +16,7 @@
       <app-add-data [apiEndpoint]="apiEndpoint" [fields]="fields" *ngIf="isContentActive('addRoadmap')"></app-add-data>
       <app-add-data [apiEndpoint]="apiEndpoint" [fields]="fields" *ngIf="isContentActive('addMilestone')"></app-add-data>
       <app-add-data [apiEndpoint]="apiEndpoint" [fields]="fields" *ngIf="isContentActive('addQuestion')"></app-add-data>
+      <app-add-data [apiEndpoint]="apiEndpoint" [fields]="fields" *ngIf="isContentActive('addAdmin')"></app-add-data>
   
       <app-json-table [apiEndpoint]="apiEndpoint" *ngIf="isContentActive('getRoadmaps')"></app-json-table>
       <app-json-table [apiEndpoint]="apiEndpoint" *ngIf="isContentActive('getMilestones')"></app-json-table>

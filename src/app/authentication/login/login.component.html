@@ -6,7 +6,7 @@
       <form #loginForm="ngForm" class="form-style">
         <!-- Email Field -->
         <label for="email">Email:</label>
-        <input type="text" id="email" ngModel name="email" class="form-control" required #email="ngModel">
+        <input email required type="text" id="email" ngModel name="email" class="form-control" required #email="ngModel">
         <div class="alert alert-danger" *ngIf="!email.valid && email.touched">
           L'email n'est pas valide.
         </div>
@@ -19,7 +19,7 @@
         </div>
   
         <!-- Submit Button -->
-        <button [disabled]="loginForm.invalid" class="btn btn-primary">Login</button>
+        <button [disabled]="loginForm.invalid" (click)="login(email.value, password.value)" class="btn btn-primary">Login</button>
       </form>
     </div>
 

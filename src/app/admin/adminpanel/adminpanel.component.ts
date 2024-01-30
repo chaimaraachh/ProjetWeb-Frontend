@@ -19,25 +19,49 @@ export class AdminpanelComponent implements OnInit {
 
   
   showComponent(component: string) {
-    if (component === 'getRoadmaps' || component === 'addRoadmap') {
-      this.apiEndpoint = ApiUrl.roadmaps;
-    } else if (component === 'getMilestones' || component === 'addMilestone') {
-      this.apiEndpoint = ApiUrl.milestones;
-    } else if (component === 'getQuestions' || component === 'addQuestion') {
-      this.apiEndpoint = ApiUrl.questions;
-    } else if (component === 'getQuizes') {
-      this.apiEndpoint = ApiUrl.quiz;
-    }else if (component === 'getUsers') {
-      this.apiEndpoint = ApiUrl.user;
-    } else { this.apiEndpoint = ''; }
-    if (component === 'addRoadmap') {
-      this.fields = fields.roadmap;
-    } else if (component === 'addMilestone') {
-      this.fields = fields.milestone ;
-    } else if (component === 'addQuestion') {
-      this.fields = fields.question;
-    } else { 
-      this.fields = [];
+    // set api endpoint
+    switch (component) {
+      case 'getRoadmaps':
+      case 'addRoadmap':
+        this.apiEndpoint = ApiUrl.roadmaps;
+        break;
+      case 'getMilestones':
+      case 'addMilestone':
+        this.apiEndpoint = ApiUrl.milestones;
+        break;
+      case 'getQuestions':
+      case 'addQuestion':
+        this.apiEndpoint = ApiUrl.questions;
+        break;
+      case 'getQuizes':
+        this.apiEndpoint = ApiUrl.quiz;
+        break;
+      case 'getUsers':
+        this.apiEndpoint = ApiUrl.user;
+        break;
+      case 'addAdmin':
+        this.apiEndpoint = ApiUrl.signup;
+        break;
+      default:
+        this.apiEndpoint = '';
+    }
+    
+    // set fields
+    switch (component) {
+      case 'addRoadmap':
+        this.fields = fields.roadmap;
+        break;
+      case 'addMilestone':
+        this.fields = fields.milestone;
+        break;
+      case 'addQuestion':
+        this.fields = fields.question;
+        break;
+      case 'addAdmin':
+        this.fields = fields.admin;
+        break;
+      default:
+        this.fields = [];
     }
     this.activeContent = component;
     this.activeComponent = component;
