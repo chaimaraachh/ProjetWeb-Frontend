@@ -7,7 +7,6 @@ export const fields = {
       ],
     milestone: [
         { name: 'id', label: 'title', type: 'text', errorMessage: 'ID is required',required: true },
-        { name: 'title', label: 'Quiz Title', type: 'text', errorMessage: 'Quiz ID is required', required: true },
         { name: 'orderNumber', label: 'Order Number', type: 'number', errorMessage: 'Order Number is required', required: true },
         { name: 'description', label: 'Description', type: 'text', errorMessage: 'Description is required', required: true },
         {
@@ -20,7 +19,6 @@ export const fields = {
         },
       ],
     question: [
-        { name: 'xxtestQuizId', label: 'Test Quiz', type: 'number', errorMessage: 'Test Quiz is required', required: true },
         { name: 'content', label: 'Content', type: 'text', errorMessage: 'Content is required', required: true },
         { name: 'option0', label: 'option0', type: 'text', errorMessage: 'Options are required', required: true },
         { name: 'option1', label: 'option1', type: 'text', errorMessage: 'Options are required', required: true },

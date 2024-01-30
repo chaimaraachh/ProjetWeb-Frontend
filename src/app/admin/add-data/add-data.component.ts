@@ -38,7 +38,7 @@ submitForm() {
     
     if(this.apiEndpoint === ApiUrl.questions) {
       this.formData = {
-        testQuizId: parseInt(this.formData.testQuizId),
+        testQuizId: this.formData.testQuizId,
         content: this.formData.content,
         options:[this.formData.option0,this.formData.option1,
           this.formData.option2,this.formData.option3,
