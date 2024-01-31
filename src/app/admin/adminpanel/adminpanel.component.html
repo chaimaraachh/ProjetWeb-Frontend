@@ -1,90 +1,46 @@
 <div class="admin-panel">
     <div class="sidebar-menu">
-      <!-- buttons for adding -->
-      <button [class.active]="activeComponent === 'addRoadmap'" (click)="showComponent('addRoadmap')">add roadmap</button>
-      <button [class.active]="activeComponent === 'addMilestone'" (click)="showComponent('addMilestone')">add milestones</button>
-      <button [class.active]="activeComponent === 'addQuestion'" (click)="showComponent('addQuestion')">add questions</button>
-      <button [class.active]="activeComponent === 'addAdmin'" (click)="showComponent('addAdmin')">add admin</button>
-      <hr>
-
-      <!-- buttons for updating -->
-      <button [class.active]="activeComponent === 'updateRoadmap'" (click)="showComponent('updateRoadmap')">update roadmap</button>
-      <button [class.active]="activeComponent === 'updateMilestone'" (click)="showComponent('updateMilestone')">update milestone</button>
-      <button [class.active]="activeComponent === 'updateQuestion'" (click)="showComponent('updateQuestion')">update question</button>
-      <button [class.active]="activeComponent === 'updateQuiz'" (click)="showComponent('updateQuiz')">update quiz</button>
-      <button [class.active]="activeComponent === 'updateUser'" (click)="showComponent('updateUser')">update user</button>
-      <hr>
-      <!-- buttons for getting -->
-      <button [class.active]="activeComponent === 'getRoadmaps'" (click)="showComponent('getRoadmaps')">get roadmaps</button>
-      <button [class.active]="activeComponent === 'getMilestones'" (click)="showComponent('getMilestones')">get milestones</button>
-      <button [class.active]="activeComponent === 'getQuestions'" (click)="showComponent('getQuestions')">get questions</button>
-      <button [class.active]="activeComponent === 'getQuizes'" (click)="showComponent('getQuizes')">get quizes</button>
-      <button [class.active]="activeComponent === 'getUsers'" (click)="showComponent('getUsers')">get users</button>
+      <div *ngFor="let group of buttonGroups">
+        <div *ngFor="let button of group.buttons">
+          <button [class.active]="isContentActive(button.id)" (click)="showComponent(button.id)">
+            {{ button.label }}
+          </button>
+        </div>
+        <hr>
+      </div>
     </div>
-    <div class="content-area">
+      <div class="content-area">
     <h2 class="content-title">{{ activeComponent | titlecase }}</h2>
-      <!-- form for adding -->
-      <app-add-data [apiEndpoint]="apiEndpoint" [fields]="fields" [fromType]="'add'" *ngIf="isContentActive('addRoadmap')"></app-add-data>
-      <app-add-data [apiEndpoint]="apiEndpoint" [fields]="fields" [fromType]="'add'" *ngIf="isContentActive('addMilestone')"></app-add-data>
-      <app-add-data [apiEndpoint]="apiEndpoint" [fields]="fields" [fromType]="'add'" *ngIf="isContentActive('addQuestion')"></app-add-data>
-      <app-add-data [apiEndpoint]="apiEndpoint" [fields]="fields" [fromType]="'add'" *ngIf="isContentActive('addAdmin')"></app-add-data>
+    <!-- forms for adding data -->
+    <ng-container *ngFor="let addingType of addingTypes">
+      <app-add-data 
+        *ngIf="isContentActive(addingType)"
+        [apiEndpoint]="apiEndpoint" 
+        [fields]="fields" 
+        [fromType]="'add'">
+      </app-add-data>
+    </ng-container>
   
-      <!-- form for updating -->
-      <app-add-data 
-            [rowData]="selectedRowData"
-            [apiEndpoint]="apiEndpoint" 
-            [fields]="fields" 
-            [fromType]="'update'" 
-            *ngIf="isContentActive('updateRoadmap')">
-        </app-add-data>
-      <app-add-data 
-      [rowData]="selectedRowData"
-            [apiEndpoint]="apiEndpoint" 
-            [fields]="fields" 
-            [fromType]="'update'" 
-            *ngIf="isContentActive('updateMilestone')"></app-add-data>
-      <app-add-data 
-      [apiEndpoint]="apiEndpoint" 
-      [fields]="fields" [fromType]="'update'" 
-      *ngIf="isContentActive('updateQuiz')"></app-add-data>
-      
-      <app-add-data 
-      [apiEndpoint]="apiEndpoint" 
-      [fields]="fields" [fromType]="'update'" 
-      *ngIf="isContentActive('updateQuestion')"></app-add-data>
-
-      <app-add-data 
-      [apiEndpoint]="apiEndpoint" 
-      [fields]="fields" [fromType]="'update'" 
-      *ngIf="isContentActive('updateUser')"></app-add-data>
+      <!-- forms for updating -->
+      <ng-container *ngFor="let updatingType of updatingTypes">
+        <app-add-data 
+        [rowData]="selectedRowData"
+        [apiEndpoint]="apiEndpoint" 
+        [fields]="fields" 
+        [fromType]="'update'" 
+        *ngIf="isContentActive(updatingType)">
+    </app-add-data>
+      </ng-container>
   
-      <!-- table for geting data -->
-      
-      <app-json-table 
-          [apiEndpoint]="apiEndpoint" 
-          (updateAdminRequest)="showComponent('updateRoadmap')" 
+      <!-- tables for geting data -->
+      <ng-container *ngFor="let gettingType of gettingTypes">
+        <app-json-table
+          [apiEndpoint]="apiEndpoint"
+          (updateAdminRequest)="showComponent(gettingType.updateComponent)"
           (updateAdminRequest)="handleUpdateAdminRequest($event)"
-          *ngIf="isContentActive('getRoadmaps')"></app-json-table>
-      <app-json-table 
-          [apiEndpoint]="apiEndpoint" 
-          (updateAdminRequest)="showComponent('updateMilestone')" 
-          (updateAdminRequest)="handleUpdateAdminRequest($event)"
-          *ngIf="isContentActive('getMilestones')"></app-json-table>
-      <app-json-table 
-          [apiEndpoint]="apiEndpoint" 
-          (updateAdminRequest)="showComponent('updateQuestion')" 
-          (updateAdminRequest)="handleUpdateAdminRequest($event)"
-          *ngIf="isContentActive('getQuestions')"></app-json-table>
-      <app-json-table 
-          [apiEndpoint]="apiEndpoint" 
-          (updateAdminRequest)="showComponent('updateQuiz')" 
-          (updateAdminRequest)="handleUpdateAdminRequest($event)"
-          *ngIf="isContentActive('getQuizes')"></app-json-table>
-      <app-json-table  
-          [apiEndpoint]="apiEndpoint" 
-          (updateAdminRequest)="showComponent('updateUser')" 
-          (updateAdminRequest)="handleUpdateAdminRequest($event)"
-          *ngIf="isContentActive('getUsers')"></app-json-table>
+          *ngIf="isContentActive(gettingType.name)">
+        </app-json-table>
+      </ng-container>
     </div>
   </div>
   

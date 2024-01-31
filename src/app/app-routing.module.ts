@@ -14,6 +14,7 @@ import { QuizGuard } from './guard/quiz.guard';
 import { TestresultComponent } from './quizpage/testresult/testresult.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AdminGuard } from './guard/admin.guard';
+import { UserGuard } from './guard/user.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -26,7 +27,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent , canActivate: [Auth2Guard]},
   { path: 'signup', component: SignupComponent , canActivate: [Auth2Guard]},
   { path: 'adminpanel', component: AdminpanelComponent, canActivate: [AdminGuard]},
-  {path : 'profile' , component: ProfileComponent},
+  {path : 'profile' , component: ProfileComponent, canActivate: [UserGuard]},
   {path : 'testresult' , component: TestresultComponent},
 ];
 

@@ -28,7 +28,5 @@ export class ApiServiceService {
   }
 
   delete<T>(url: string): Observable<any> {
-    console.log(url);
-    
     return this.http.delete(url);
   }}

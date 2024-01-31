@@ -1,9 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ApiUrl } from 'src/app/config/config';
 import { fields } from './fields';
-import { JsonTableComponent } from 'src/app/json-table/json-table.component';
-import { Subscription } from 'rxjs';
-
+import {buttonGroups,addingTypes,updatingTypes,gettingTypes } from './adminButtons';
 @Component({
   selector: 'app-adminpanel',
   templateUrl: './adminpanel.component.html',
@@ -13,6 +11,10 @@ export class AdminpanelComponent implements OnInit {
   activeContent: string = '';
   apiEndpoint: string = '';
   fields = [{}];
+  buttonGroups = buttonGroups;
+  addingTypes = addingTypes;
+  updatingTypes = updatingTypes;
+  gettingTypes = gettingTypes;
 
   constructor() {}
 
@@ -88,11 +90,7 @@ export class AdminpanelComponent implements OnInit {
  
   selectedRowData: any = null;  
   handleUpdateAdminRequest(rowData: any) {
-    console.log("this is admin update request");
     this.selectedRowData = rowData;
-
-    console.log(rowData);
-    ;
   }
   isContentActive(content: string): boolean {
     return this.activeContent === content;
