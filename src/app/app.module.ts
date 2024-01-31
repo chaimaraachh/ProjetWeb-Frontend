@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -11,7 +11,6 @@ import { RoadmaplistComponent } from './roadmaps/roadmaplist/roadmaplist.compone
 import { MilestoneComponent } from './roadmaps/milestone/milestone.component';
 import { QuizComponent } from './quizpage/quiz/quiz.component';
 import { QuestionComponent } from './quizpage/question/question.component';
-import { SearchComponent } from './search/search.component';
 import { HomedescriptionComponent } from './homedescription/homedescription.component';
 import { MovingImagesComponent } from './moving-images/moving-images.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
@@ -29,6 +28,7 @@ import { UserslistComponent } from './dashboard/userslist/userslist.component';
 import { AddDataComponent } from './admin/add-data/add-data.component';
 import { TestresultComponent } from './quizpage/testresult/testresult.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -40,7 +40,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     MilestoneComponent,
     QuizComponent,
     QuestionComponent,
-    SearchComponent,
     HomedescriptionComponent,
     MovingImagesComponent,
     AboutusComponent,
@@ -62,6 +61,12 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    BrowserAnimationsModule, 
+    ToastrModule.forRoot({ 
+      timeOut: 5000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+    }),
   ],
   providers: [
     {

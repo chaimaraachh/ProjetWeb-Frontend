@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { QuizService } from '../quiz.service';
 import { ApiServiceService } from 'src/app/services/api-service.service';
 import { SharedDataService } from 'src/app/services/shared.data.service';
+import { ToastrService } from 'ngx-toastr'; 
 
 @Component({
   selector: 'app-quiz',
@@ -26,7 +27,8 @@ export class QuizComponent implements OnInit {
     private quizService: QuizService,
     private router: Router,
     private apiService: ApiServiceService,
-    private sharedDataService: SharedDataService
+    private sharedDataService: SharedDataService,
+    private toastr: ToastrService
     ) {
     this.questions = [];
     this.id = this.acr.snapshot.params['id'];
@@ -43,13 +45,18 @@ export class QuizComponent implements OnInit {
         this.questions.forEach(question => {
           this.userAnswers[question.id] = -1;
         });
+
       },
       error: (error) => {
         console.error(error);
+        this.toastr.error('Failed to load questions.');
+
       }
     });
     this.startTimer();
   }
+
+
   startTimer() {
     this.quizStartTime = new Date();
     const timerInterval = 1000;
@@ -61,7 +68,7 @@ export class QuizComponent implements OnInit {
         clearInterval(timer);
         if (this.router.url === '/'+this.acr.snapshot.url.join('/')) {
           if (!this.hasQuizBeenSubmitted) {
-            alert('Time is up! Your quiz is submitted.');
+          this.toastr.info('Time is up! Your quiz is submitted.');
             this.submitQuiz();
           }
         }
@@ -71,6 +78,7 @@ export class QuizComponent implements OnInit {
   
   submitQuiz() {
     if (this.hasQuizBeenSubmitted) {
+      this.toastr.warning('Quiz has already been submitted.');
       return; // Prevent multiple submissions
     }
     this.hasQuizBeenSubmitted = true;
@@ -81,6 +89,8 @@ export class QuizComponent implements OnInit {
       },
       error: (error) => {
         console.error(error);
+        this.toastr.error('Failed to submit the quiz.');
+
       }
     });
   }

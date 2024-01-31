@@ -15,7 +15,7 @@ export class AdminpanelComponent implements OnInit {
   fields = [{}];
 
   constructor() {}
-  
+
   ngOnInit(): void {}
   activeComponent: string = '';
 

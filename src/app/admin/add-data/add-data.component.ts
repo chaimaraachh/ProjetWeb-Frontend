@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { ApiUrl } from 'src/app/config/config';
 import { ApiServiceService } from 'src/app/services/api-service.service';
 
@@ -16,7 +17,7 @@ export class AddDataComponent implements OnInit {
   apiUpdateEndpoint: string="";
   constructor(
     private apiservice : ApiServiceService,
-  ) { }
+    private toastr: ToastrService  ) { }
   formData: any = {};
   
   ngOnInit(): void {
@@ -31,6 +32,8 @@ export class AddDataComponent implements OnInit {
       this.formData = { ...this.rowData };
     }
   }
+
+
   handleNumberConversion() {
     for (const field of this.fields) {
       if (field.type === 'number' && this.formData.hasOwnProperty(field.name)) {
@@ -40,9 +43,7 @@ export class AddDataComponent implements OnInit {
   }
 
 submitForm() {   
-    this.handleNumberConversion();
-    console.log(this.formData);
-    
+    this.handleNumberConversion();    
     if(this.apiEndpoint === ApiUrl.questions) {
       this.formData = {
         testQuizId: this.formData.testQuizId,
@@ -57,26 +58,21 @@ submitForm() {
     if (this.fromType === 'add') {
       this.apiservice.post(this.apiEndpoint, this.formData).subscribe({
         next: (response: any) => {
-          console.log(response);
+          this.toastr.success('Data added successfully', 'Success');
         },
         error: (error: any) => {
-          console.error(error);
+          this.toastr.error('Failed to add data', 'Error');
         }
       });
   } else if (this.fromType === 'update') {
     this.apiUpdateEndpoint = this.apiEndpoint+'/'+this.formData.id;
-    delete this.formData.id
-    console.log("hi");
-    
-    console.log(this.apiUpdateEndpoint);
-    console.log(this.formData);
-    
+    delete this.formData.id    
     this.apiservice.patch(this.apiUpdateEndpoint, this.formData).subscribe({
       next: (response: any) => {
-        console.log(response);
+        this.toastr.success('Data updated successfully', 'Success');
       },
       error: (error: any) => {
-        console.error(error);
+        this.toastr.error('Failed to update data', 'Error');
       }
     });
   }
