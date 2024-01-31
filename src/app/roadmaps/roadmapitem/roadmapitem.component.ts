@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { RoadmapserviceService } from '../roadmapservice.service';
 import { AuthentificationService } from '../../authentication/services/authentification.service'; // Correct service import
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-roadmapitem',
@@ -12,7 +13,8 @@ export class RoadmapitemComponent {
 
   constructor(
     private roadmapService: RoadmapserviceService,
-    private authService: AuthentificationService // Correct AuthService
+    private authService: AuthentificationService,
+    private toastr: ToastrService
   ) {}
 
   image!: string;
@@ -25,14 +27,14 @@ export class RoadmapitemComponent {
     if (this.authService.isAuthenticated()) {
       this.roadmapService.subscribeToRoadmap(this.name).subscribe({
         next: (response) => {
-          console.log('Subscribed to roadmap:', response);
+          this.toastr.success('Successfully subscribed to the roadmap!'); // Display success toast
         },
         error: (error) => {
-          console.error('Error subscribing to roadmap:', error);
+          this.toastr.error('Failed to subscribe to the roadmap.'); // Display error toast
         }
       });
     } else {
-      console.error('User must be logged in to subscribe.');
+      this.toastr.error('User must be logged in to subscribe.'); // Display error toast for unauthenticated users
     }
   }
   

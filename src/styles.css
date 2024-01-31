@@ -1,6 +1,6 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 @import url("https://css.gg/css");
-
+@import '../node_modules/ngx-toastr/toastr.css';
 
 
 :root {

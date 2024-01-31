@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { CountryService } from '../services/country.service';
 import { NgForm } from '@angular/forms';
 import { SignupService } from './services/signup.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-signup',
@@ -16,7 +17,8 @@ export class SignupComponent implements OnInit{
   constructor(
     private router: Router,
     private countryService: CountryService,
-    private signUpService: SignupService
+    private signUpService: SignupService,
+    private toastr: ToastrService
   ) { }
   ngOnInit() {
     this.countryService.getCountries().subscribe(data => {
@@ -34,13 +36,11 @@ export class SignupComponent implements OnInit{
     console.log(signUpForm.value);
     this.signUpService.signup(signUpForm.value).subscribe({
       next: (response) => {
-        alert('Vous êtes signé');
-        console.log(response);
+        this.toastr.success('You have successfully signed up', 'Success');
         this.router.navigate(['../login']);
       },
       error : (error) => {
-        alert(error.error.message);
-        console.log(error);
+        this.toastr.error(error.error.message, 'Error');
       }
       }
       );
