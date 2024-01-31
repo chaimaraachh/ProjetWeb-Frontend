@@ -25,9 +25,9 @@ export class AddDataComponent implements OnInit {
     } else if (this.apiEndpoint === ApiUrl.questions) {
       this.loadDropdownOptions(ApiUrl.milestones);
     }
+    console.log("fil init",this.rowData);
+    
     if (this.rowData) {
-      console.log(this.rowData);
-      
       this.formData = { ...this.rowData };
     }
   }
