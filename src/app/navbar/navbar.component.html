@@ -24,7 +24,7 @@
       <li *ngIf="authentificationService.isAuthenticated() && authentificationService.isAdmin()" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
         <a class="nav-link" [routerLink]="['/adminpanel']">Admin Panel</a>
       </li>
-      <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+      <li *ngIf="authentificationService.isAuthenticated() && authentificationService.isUser()" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
         <a *ngIf="authentificationService.isAuthenticated()"   class="nav-link" [routerLink]="['/profile']">Profile</a>
       </li>
     </ul>

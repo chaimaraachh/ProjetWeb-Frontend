@@ -34,6 +34,16 @@ export class AuthentificationService {
     }
     return false; 
   }
+  isUser(): boolean {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const decodedToken: any = jwtDecode(token);
+      if (decodedToken && decodedToken.role && decodedToken.role === 'user') {
+        return true;
+      }
+    }
+    return false; 
+  }
 
 }
 
