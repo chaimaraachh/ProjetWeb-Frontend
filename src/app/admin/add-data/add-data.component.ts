@@ -11,6 +11,8 @@ export class AddDataComponent implements OnInit {
   @Input() fields: any[]=[];
   @Output() onSubmit = new EventEmitter<any>();
   @Input() apiEndpoint: string="";
+  @Input() fromType: string="";
+  apiUpdateEndpoint: string="";
   constructor(
     private apiservice : ApiServiceService,
   ) { }
@@ -45,8 +47,25 @@ submitForm() {
         correctOption: parseInt(this.formData.correctOption)
       };
     }
-        
-    this.apiservice.post(this.apiEndpoint, this.formData).subscribe({
+    
+    if (this.fromType === 'add') {
+      this.apiservice.post(this.apiEndpoint, this.formData).subscribe({
+        next: (response: any) => {
+          console.log(response);
+        },
+        error: (error: any) => {
+          console.error(error);
+        }
+      });
+  } else if (this.fromType === 'update') {
+    this.apiUpdateEndpoint = this.apiEndpoint+'/'+this.formData.id;
+    delete this.formData.id
+    console.log("hi");
+    
+    console.log(this.apiUpdateEndpoint);
+    console.log(this.formData);
+    
+    this.apiservice.patch(this.apiUpdateEndpoint, this.formData).subscribe({
       next: (response: any) => {
         console.log(response);
       },
@@ -55,6 +74,7 @@ submitForm() {
       }
     });
   }
+}
 
   loadDropdownOptions(url: string) {
     const dropdownField = this.fields.find(f => f.type === 'dropdown');

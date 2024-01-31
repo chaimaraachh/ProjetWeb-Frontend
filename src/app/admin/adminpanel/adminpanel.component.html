@@ -1,10 +1,20 @@
 <div class="admin-panel">
     <div class="sidebar-menu">
+      <!-- buttons for adding -->
       <button [class.active]="activeComponent === 'addRoadmap'" (click)="showComponent('addRoadmap')">add roadmap</button>
       <button [class.active]="activeComponent === 'addMilestone'" (click)="showComponent('addMilestone')">add milestones</button>
       <button [class.active]="activeComponent === 'addQuestion'" (click)="showComponent('addQuestion')">add questions</button>
       <button [class.active]="activeComponent === 'addAdmin'" (click)="showComponent('addAdmin')">add admin</button>
       <hr>
+
+      <!-- buttons for updating -->
+      <button [class.active]="activeComponent === 'updateRoadmap'" (click)="showComponent('updateRoadmap')">update roadmap</button>
+      <button [class.active]="activeComponent === 'updateMilestone'" (click)="showComponent('updateMilestone')">update milestone</button>
+      <button [class.active]="activeComponent === 'updateQuestion'" (click)="showComponent('updateQuestion')">update question</button>
+      <button [class.active]="activeComponent === 'updateQuiz'" (click)="showComponent('updateQuiz')">update quiz</button>
+      <button [class.active]="activeComponent === 'updateUser'" (click)="showComponent('updateUser')">update user</button>
+      <hr>
+      <!-- buttons for getting -->
       <button [class.active]="activeComponent === 'getRoadmaps'" (click)="showComponent('getRoadmaps')">get roadmaps</button>
       <button [class.active]="activeComponent === 'getMilestones'" (click)="showComponent('getMilestones')">get milestones</button>
       <button [class.active]="activeComponent === 'getQuestions'" (click)="showComponent('getQuestions')">get questions</button>
@@ -13,16 +23,39 @@
     </div>
     <div class="content-area">
     <h2 class="content-title">{{ activeComponent | titlecase }}</h2>
-      <app-add-data [apiEndpoint]="apiEndpoint" [fields]="fields" *ngIf="isContentActive('addRoadmap')"></app-add-data>
-      <app-add-data [apiEndpoint]="apiEndpoint" [fields]="fields" *ngIf="isContentActive('addMilestone')"></app-add-data>
-      <app-add-data [apiEndpoint]="apiEndpoint" [fields]="fields" *ngIf="isContentActive('addQuestion')"></app-add-data>
-      <app-add-data [apiEndpoint]="apiEndpoint" [fields]="fields" *ngIf="isContentActive('addAdmin')"></app-add-data>
+      <!-- form for adding -->
+      <app-add-data [apiEndpoint]="apiEndpoint" [fields]="fields" [fromType]="'add'" *ngIf="isContentActive('addRoadmap')"></app-add-data>
+      <app-add-data [apiEndpoint]="apiEndpoint" [fields]="fields" [fromType]="'add'" *ngIf="isContentActive('addMilestone')"></app-add-data>
+      <app-add-data [apiEndpoint]="apiEndpoint" [fields]="fields" [fromType]="'add'" *ngIf="isContentActive('addQuestion')"></app-add-data>
+      <app-add-data [apiEndpoint]="apiEndpoint" [fields]="fields" [fromType]="'add'" *ngIf="isContentActive('addAdmin')"></app-add-data>
   
-      <app-json-table [apiEndpoint]="apiEndpoint" *ngIf="isContentActive('getRoadmaps')"></app-json-table>
-      <app-json-table [apiEndpoint]="apiEndpoint" *ngIf="isContentActive('getMilestones')"></app-json-table>
-      <app-json-table [apiEndpoint]="apiEndpoint" *ngIf="isContentActive('getQuestions')"></app-json-table>
-      <app-json-table [apiEndpoint]="apiEndpoint" *ngIf="isContentActive('getQuizes')"></app-json-table>
-      <app-json-table [apiEndpoint]="apiEndpoint" *ngIf="isContentActive('getUsers')"></app-json-table>
+      <!-- form for updating -->
+      <app-add-data [apiEndpoint]="apiEndpoint" [fields]="fields" [fromType]="'update'" *ngIf="isContentActive('updateRoadmap')"></app-add-data>
+      <app-add-data [apiEndpoint]="apiEndpoint" [fields]="fields" [fromType]="'update'" *ngIf="isContentActive('updateMilestone')"></app-add-data>
+      <app-add-data [apiEndpoint]="apiEndpoint" [fields]="fields" [fromType]="'update'" *ngIf="isContentActive('updateQuestion')"></app-add-data>
+  
+      <!-- table for geting data -->
+      
+      <app-json-table 
+          [apiEndpoint]="apiEndpoint" 
+          (updateAdminRequest)="showComponent('updateRoadmap')" 
+          *ngIf="isContentActive('getRoadmaps')"></app-json-table>
+      <app-json-table 
+          [apiEndpoint]="apiEndpoint" 
+          (updateAdminRequest)="showComponent('updateMilestone')" 
+          *ngIf="isContentActive('getMilestones')"></app-json-table>
+      <app-json-table 
+          [apiEndpoint]="apiEndpoint" 
+          (updateAdminRequest)="showComponent('updateQuestion')" 
+          *ngIf="isContentActive('getQuestions')"></app-json-table>
+      <app-json-table 
+          [apiEndpoint]="apiEndpoint" 
+          (updateAdminRequest)="showComponent('updateQuiz')" 
+          *ngIf="isContentActive('getQuizes')"></app-json-table>
+      <app-json-table  
+          [apiEndpoint]="apiEndpoint" 
+          (updateAdminRequest)="showComponent('updateUser')" 
+          *ngIf="isContentActive('getUsers')"></app-json-table>
     </div>
   </div>
   

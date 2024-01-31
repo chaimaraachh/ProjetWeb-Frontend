@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ApiUrl } from 'src/app/config/config';
 import { fields } from './fields';
+import { JsonTableComponent } from 'src/app/json-table/json-table.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-adminpanel',
@@ -23,20 +25,25 @@ export class AdminpanelComponent implements OnInit {
     switch (component) {
       case 'getRoadmaps':
       case 'addRoadmap':
+      case 'updateRoadmap':
         this.apiEndpoint = ApiUrl.roadmaps;
         break;
       case 'getMilestones':
       case 'addMilestone':
+      case 'updateMilestone':
         this.apiEndpoint = ApiUrl.milestones;
         break;
       case 'getQuestions':
       case 'addQuestion':
+      case 'updateQuestion':
         this.apiEndpoint = ApiUrl.questions;
         break;
       case 'getQuizes':
+      case 'updateQuiz':
         this.apiEndpoint = ApiUrl.quiz;
         break;
       case 'getUsers':
+      case 'updateUser':
         this.apiEndpoint = ApiUrl.user;
         break;
       case 'addAdmin':
@@ -49,16 +56,26 @@ export class AdminpanelComponent implements OnInit {
     // set fields
     switch (component) {
       case 'addRoadmap':
+      case 'updateRoadmap':
         this.fields = fields.roadmap;
         break;
       case 'addMilestone':
+      case 'updateMilestone':
         this.fields = fields.milestone;
         break;
       case 'addQuestion':
+      case 'updateQuestion':
         this.fields = fields.question;
         break;
       case 'addAdmin':
+      case 'updateAdmin':
         this.fields = fields.admin;
+        break;
+      case 'updateQuiz':
+        this.fields = fields.quiz;
+        break;
+      case 'updateUser':
+        this.fields = fields.user;
         break;
       default:
         this.fields = [];

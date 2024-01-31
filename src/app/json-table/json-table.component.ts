@@ -9,6 +9,10 @@ import { ApiServiceService } from '../services/api-service.service';
 export class JsonTableComponent implements OnInit {
   @Input() apiEndpoint: string="";
   @Output() deletionCompleted = new EventEmitter<void>();
+  @Output() updateAdminRequest = new EventEmitter<void>();
+  emitUpdateAdminRequest() {
+    this.updateAdminRequest.emit();
+  }
 
   jsonData: any[]= [];
   constructor(private apiService: ApiServiceService, private cd: ChangeDetectorRef) {}

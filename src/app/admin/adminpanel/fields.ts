@@ -41,4 +41,8 @@ export const fields = {
       //{ name: 'confirm password', label: 'Password', type: 'password', errorMessage: 'Password is required', required: true },
       { name: 'role', label: 'Role', type: 'text', errorMessage: 'Role is required', required: true },
       ],
+    quiz: [
+    ],
+    user: [
+    ]
 }
