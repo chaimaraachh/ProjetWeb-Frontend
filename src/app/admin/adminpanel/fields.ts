@@ -42,7 +42,15 @@ export const fields = {
       { name: 'role', label: 'Role', type: 'text', errorMessage: 'Role is required', required: true },
       ],
     quiz: [
+      { name: 'id', label: 'id', type: 'number', errorMessage: 'id is required' , required: true},
+      { name: 'title', label: 'Title', type: 'text', errorMessage: 'Title is required', required: true },
     ],
     user: [
-    ]
+      // id	username	password	email	role
+      { name: 'id', label: 'id', type: 'number', errorMessage: 'id is required' , required: true},
+      { name: 'username', label: 'username', type: 'text', errorMessage: 'username is required', required: true },
+      { name: 'password', label: 'Password', type: 'password', errorMessage: 'Password is required', required: true },
+      { name: 'email', label: 'Email', type: 'email', errorMessage: 'Email is required', required: true },
+      { name: 'role', label: 'Role', type: 'text', errorMessage: 'Role is required', required: true },
+    ],
 }

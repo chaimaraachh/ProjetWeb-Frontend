@@ -12,6 +12,7 @@ export class AddDataComponent implements OnInit {
   @Output() onSubmit = new EventEmitter<any>();
   @Input() apiEndpoint: string="";
   @Input() fromType: string="";
+  @Input() rowData: any = null;
   apiUpdateEndpoint: string="";
   constructor(
     private apiservice : ApiServiceService,
@@ -23,6 +24,11 @@ export class AddDataComponent implements OnInit {
       this.loadDropdownOptions(ApiUrl.roadmaps);
     } else if (this.apiEndpoint === ApiUrl.questions) {
       this.loadDropdownOptions(ApiUrl.milestones);
+    }
+    if (this.rowData) {
+      console.log(this.rowData);
+      
+      this.formData = { ...this.rowData };
     }
   }
   handleNumberConversion() {

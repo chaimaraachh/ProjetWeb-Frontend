@@ -9,9 +9,11 @@ import { ApiServiceService } from '../services/api-service.service';
 export class JsonTableComponent implements OnInit {
   @Input() apiEndpoint: string="";
   @Output() deletionCompleted = new EventEmitter<void>();
-  @Output() updateAdminRequest = new EventEmitter<void>();
-  emitUpdateAdminRequest() {
-    this.updateAdminRequest.emit();
+  @Output() updateAdminRequest = new EventEmitter<any>();
+  emitUpdateAdminRequest(row : any) {
+    console.log("emitting row",row);
+    
+    this.updateAdminRequest.emit(row);
   }
 
   jsonData: any[]= [];

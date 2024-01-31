@@ -30,31 +30,60 @@
       <app-add-data [apiEndpoint]="apiEndpoint" [fields]="fields" [fromType]="'add'" *ngIf="isContentActive('addAdmin')"></app-add-data>
   
       <!-- form for updating -->
-      <app-add-data [apiEndpoint]="apiEndpoint" [fields]="fields" [fromType]="'update'" *ngIf="isContentActive('updateRoadmap')"></app-add-data>
-      <app-add-data [apiEndpoint]="apiEndpoint" [fields]="fields" [fromType]="'update'" *ngIf="isContentActive('updateMilestone')"></app-add-data>
-      <app-add-data [apiEndpoint]="apiEndpoint" [fields]="fields" [fromType]="'update'" *ngIf="isContentActive('updateQuestion')"></app-add-data>
+      <app-add-data 
+            [rowData]="selectedRowData"
+            [apiEndpoint]="apiEndpoint" 
+            [fields]="fields" 
+            [fromType]="'update'" 
+            *ngIf="isContentActive('updateRoadmap')">
+        </app-add-data>
+      <app-add-data 
+      [rowData]="selectedRowData"
+            [apiEndpoint]="apiEndpoint" 
+            [fields]="fields" 
+            [fromType]="'update'" 
+            *ngIf="isContentActive('updateMilestone')"></app-add-data>
+      <app-add-data 
+      [apiEndpoint]="apiEndpoint" 
+      [fields]="fields" [fromType]="'update'" 
+      *ngIf="isContentActive('updateQuiz')"></app-add-data>
+      
+      <app-add-data 
+      [apiEndpoint]="apiEndpoint" 
+      [fields]="fields" [fromType]="'update'" 
+      *ngIf="isContentActive('updateQuestion')"></app-add-data>
+
+      <app-add-data 
+      [apiEndpoint]="apiEndpoint" 
+      [fields]="fields" [fromType]="'update'" 
+      *ngIf="isContentActive('updateUser')"></app-add-data>
   
       <!-- table for geting data -->
       
       <app-json-table 
           [apiEndpoint]="apiEndpoint" 
           (updateAdminRequest)="showComponent('updateRoadmap')" 
+          (updateAdminRequest)="handleUpdateAdminRequest($event)"
           *ngIf="isContentActive('getRoadmaps')"></app-json-table>
       <app-json-table 
           [apiEndpoint]="apiEndpoint" 
           (updateAdminRequest)="showComponent('updateMilestone')" 
+          (updateAdminRequest)="handleUpdateAdminRequest($event)"
           *ngIf="isContentActive('getMilestones')"></app-json-table>
       <app-json-table 
           [apiEndpoint]="apiEndpoint" 
           (updateAdminRequest)="showComponent('updateQuestion')" 
+          (updateAdminRequest)="handleUpdateAdminRequest($event)"
           *ngIf="isContentActive('getQuestions')"></app-json-table>
       <app-json-table 
           [apiEndpoint]="apiEndpoint" 
           (updateAdminRequest)="showComponent('updateQuiz')" 
+          (updateAdminRequest)="handleUpdateAdminRequest($event)"
           *ngIf="isContentActive('getQuizes')"></app-json-table>
       <app-json-table  
           [apiEndpoint]="apiEndpoint" 
           (updateAdminRequest)="showComponent('updateUser')" 
+          (updateAdminRequest)="handleUpdateAdminRequest($event)"
           *ngIf="isContentActive('getUsers')"></app-json-table>
     </div>
   </div>
