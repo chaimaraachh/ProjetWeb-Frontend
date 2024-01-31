@@ -90,11 +90,7 @@ export class AdminpanelComponent implements OnInit {
  
   selectedRowData: any = null;  
   handleUpdateAdminRequest(rowData: any) {
-    console.log("this is admin update request");
     this.selectedRowData = rowData;
-
-    console.log(rowData);
-    ;
   }
   isContentActive(content: string): boolean {
     return this.activeContent === content;

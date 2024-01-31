@@ -26,7 +26,6 @@ export class AddDataComponent implements OnInit {
     } else if (this.apiEndpoint === ApiUrl.questions) {
       this.loadDropdownOptions(ApiUrl.milestones);
     }
-    console.log("fil init",this.rowData);
     
     if (this.rowData) {
       this.formData = { ...this.rowData };
@@ -82,7 +81,6 @@ submitForm() {
     const dropdownField = this.fields.find(f => f.type === 'dropdown');
     this.apiservice.get(url).subscribe({
       next: (response: any) => {
-        console.log(response);
         dropdownField.options = response.map((r: any) => {
           return { value: r.id, text: r.id };
         });
