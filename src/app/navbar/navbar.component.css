@@ -5,16 +5,18 @@
 }
 
 .navbar-brand {
-  color: var(--color3); /* Light Lavender text */
+  color: var(--color3); 
 }
 
 .navbar-nav .nav-link {
-  color: var(--color3); /* Light Lavender text */
+  color: var(--color3); 
   transition: color 0.3s ease;
+  padding-right: 10px;
+
 }
 
 .navbar-nav .nav-link:hover, .navbar-nav .nav-link:focus {
-  color: #fff; /* White color on hover/focus for better visibility */
+  color: #fff; 
 }
 
 .navbar-toggler {
@@ -34,4 +36,10 @@
 
 .navbar-nav {
   flex-direction: row;
+}
+
+.logo-text {
+  font-weight: bold;
+  font-size: 27px; 
+  padding-left: 20px;
 }
