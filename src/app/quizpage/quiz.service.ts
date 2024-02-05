@@ -26,9 +26,9 @@ export class QuizService {
   }
   
   
-  submitQuiz(userAnswers: { [id: number]: number }): Observable<any> {
-    const answers = Object.entries(userAnswers).map(([id, answerIndex]) => ({
-      id: parseInt(id, 10),
+  submitQuiz(userAnswers: { [questionId: number]: number }): Observable<any> {
+    const answers = Object.entries(userAnswers).map(([questionId, answerIndex]) => ({
+      questionId: parseInt(questionId),
       userAnswer: answerIndex
     }));
     const payload = {
