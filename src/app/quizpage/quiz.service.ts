@@ -26,12 +26,13 @@ export class QuizService {
   }
   
   
-  submitQuiz(userAnswers: { [questionId: number]: number }): Observable<any> {
+  submitQuiz(userAnswers: { [questionId: number]: number },quizId : number): Observable<any> {
     const answers = Object.entries(userAnswers).map(([questionId, answerIndex]) => ({
       questionId: parseInt(questionId),
       userAnswer: answerIndex
     }));
     const payload = {
+      quizId : quizId,
       answers: answers
     };
     return this.http.post(ApiUrl.verifyQuiz, payload);

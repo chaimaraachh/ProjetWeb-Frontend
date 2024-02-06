@@ -82,7 +82,7 @@ export class QuizComponent implements OnInit {
       return; // Prevent multiple submissions
     }
     this.hasQuizBeenSubmitted = true;
-    this.quizService.submitQuiz(this.userAnswers).subscribe({
+    this.quizService.submitQuiz(this.userAnswers,this.id).subscribe({
       next: (response) => {
         this.sharedDataService.setQuizScore(response.score);
         this.router.navigate(['/testresult']);
